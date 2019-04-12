@@ -46,6 +46,7 @@ BenChain.Web/node_modules
 
 /BenChain.Api/BenChain.Api/obj/Debug/BenChain.Api.csprojAssemblyReference.cache
 /BenChain.Api/BenChain.Api/obj/Debug
+/BenChain.Api/BenChain.Api/bin
 /BenChain.Api/.vs/BenChain.Api/v16/Server/sqlite3/storage.ide-wal
 /BenChain.Api/.vs/BenChain.Api/v16/Server/sqlite3/storage.ide-shm
 /BenChain.Api/.vs/BenChain.Api/v16/Server/sqlite3/storage.ide
