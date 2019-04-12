@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="odysseyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appendix">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="550" />
+          <Property Name="HashId" Type="varchar" MaxLength="550" />
+          <Property Name="ContextId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Context">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RefId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="BaseSystem" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EffectiveEnd" Type="datetime" Nullable="false" />
+          <Property Name="Type" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Note" Type="text" Nullable="false" />
+          <Property Name="ExplanationNote" Type="text" />
+          <Property Name="Hash" Type="nvarchar" MaxLength="550" />
+          <Property Name="Creator" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Phone" Type="varchar" MaxLength="250" />
+          <Property Name="HashId" Type="varchar" MaxLength="550" />
+          <Property Name="SignatorLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="Reference">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Note" Type="text" />
+        </EntityType>
+        <EntityType Name="Signatory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ContextId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParticipantId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Note" Type="text" />
+          <Property Name="ParentContractId" Type="varchar" MaxLength="550" />
+          <Property Name="Hash1" Type="varchar" MaxLength="250" />
+          <Property Name="Hash2" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_Appendix_Context">
+          <End Role="Context" Type="Self.Context" Multiplicity="1" />
+          <End Role="Appendix" Type="Self.Appendix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appendix">
+              <PropertyRef Name="ContextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Context_Reference">
+          <End Role="Reference" Type="Self.Reference" Multiplicity="1" />
+          <End Role="Context" Type="Self.Context" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reference">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Context">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signatory_Context">
+          <End Role="Context" Type="Self.Context" Multiplicity="1" />
+          <End Role="Signatory" Type="Self.Signatory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Signatory">
+              <PropertyRef Name="ContextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signatory_Participant">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="Signatory" Type="Self.Signatory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Signatory">
+              <PropertyRef Name="ParticipantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="odysseyModelStoreContainer">
+          <EntitySet Name="Appendix" EntityType="Self.Appendix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Context" EntityType="Self.Context" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reference" EntityType="Self.Reference" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Signatory" EntityType="Self.Signatory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Appendix_Context" Association="Self.FK_Appendix_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="Appendix" EntitySet="Appendix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Context_Reference" Association="Self.FK_Context_Reference">
+            <End Role="Reference" EntitySet="Reference" />
+            <End Role="Context" EntitySet="Context" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signatory_Context" Association="Self.FK_Signatory_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="Signatory" EntitySet="Signatory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signatory_Participant" Association="Self.FK_Signatory_Participant">
+            <End Role="Participant" EntitySet="Participant" />
+            <End Role="Signatory" EntitySet="Signatory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="odysseyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appendix">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="HashId" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="ContextId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Context" Relationship="Self.FK_Appendix_Context" FromRole="Appendix" ToRole="Context" />
+        </EntityType>
+        <EntityType Name="Context">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="RefId" Type="Guid" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BaseSystem" Type="Guid" Nullable="false" />
+          <Property Name="EffectiveEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Type" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExplanationNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Hash" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Creator" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Appendix" Relationship="Self.FK_Appendix_Context" FromRole="Context" ToRole="Appendix" />
+          <NavigationProperty Name="Reference" Relationship="Self.FK_Context_Reference" FromRole="Context" ToRole="Reference" />
+          <NavigationProperty Name="Signatory" Relationship="Self.FK_Signatory_Context" FromRole="Context" ToRole="Signatory" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="HashId" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="SignatorLevel" Type="Int32" />
+          <NavigationProperty Name="Signatory" Relationship="Self.FK_Signatory_Participant" FromRole="Participant" ToRole="Signatory" />
+        </EntityType>
+        <EntityType Name="Reference">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Context" Relationship="Self.FK_Context_Reference" FromRole="Reference" ToRole="Context" />
+        </EntityType>
+        <EntityType Name="Signatory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ContextId" Type="Guid" Nullable="false" />
+          <Property Name="ParticipantId" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ParentContractId" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="Hash1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Hash2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Context" Relationship="Self.FK_Signatory_Context" FromRole="Signatory" ToRole="Context" />
+          <NavigationProperty Name="Participant" Relationship="Self.FK_Signatory_Participant" FromRole="Signatory" ToRole="Participant" />
+        </EntityType>
+        <Association Name="FK_Appendix_Context">
+          <End Role="Context" Type="Self.Context" Multiplicity="1" />
+          <End Role="Appendix" Type="Self.Appendix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appendix">
+              <PropertyRef Name="ContextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Context_Reference">
+          <End Role="Reference" Type="Self.Reference" Multiplicity="1" />
+          <End Role="Context" Type="Self.Context" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reference">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Context">
+              <PropertyRef Name="RefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signatory_Context">
+          <End Role="Context" Type="Self.Context" Multiplicity="1" />
+          <End Role="Signatory" Type="Self.Signatory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Signatory">
+              <PropertyRef Name="ContextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Signatory_Participant">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="Signatory" Type="Self.Signatory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Signatory">
+              <PropertyRef Name="ParticipantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="odysseyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appendix" EntityType="Self.Appendix" />
+          <EntitySet Name="Context" EntityType="Self.Context" />
+          <EntitySet Name="Participant" EntityType="Self.Participant" />
+          <EntitySet Name="Reference" EntityType="Self.Reference" />
+          <EntitySet Name="Signatory" EntityType="Self.Signatory" />
+          <AssociationSet Name="FK_Appendix_Context" Association="Self.FK_Appendix_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="Appendix" EntitySet="Appendix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Context_Reference" Association="Self.FK_Context_Reference">
+            <End Role="Reference" EntitySet="Reference" />
+            <End Role="Context" EntitySet="Context" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signatory_Context" Association="Self.FK_Signatory_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="Signatory" EntitySet="Signatory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Signatory_Participant" Association="Self.FK_Signatory_Participant">
+            <End Role="Participant" EntitySet="Participant" />
+            <End Role="Signatory" EntitySet="Signatory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="odysseyModelStoreContainer" CdmEntityContainer="odysseyEntities">
+          <EntitySetMapping Name="Appendix">
+            <EntityTypeMapping TypeName="odysseyModel.Appendix">
+              <MappingFragment StoreEntitySet="Appendix">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="HashId" ColumnName="HashId" />
+                <ScalarProperty Name="ContextId" ColumnName="ContextId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Context">
+            <EntityTypeMapping TypeName="odysseyModel.Context">
+              <MappingFragment StoreEntitySet="Context">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="BaseSystem" ColumnName="BaseSystem" />
+                <ScalarProperty Name="EffectiveEnd" ColumnName="EffectiveEnd" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ExplanationNote" ColumnName="ExplanationNote" />
+                <ScalarProperty Name="Hash" ColumnName="Hash" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participant">
+            <EntityTypeMapping TypeName="odysseyModel.Participant">
+              <MappingFragment StoreEntitySet="Participant">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="HashId" ColumnName="HashId" />
+                <ScalarProperty Name="SignatorLevel" ColumnName="SignatorLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reference">
+            <EntityTypeMapping TypeName="odysseyModel.Reference">
+              <MappingFragment StoreEntitySet="Reference">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Signatory">
+            <EntityTypeMapping TypeName="odysseyModel.Signatory">
+              <MappingFragment StoreEntitySet="Signatory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ContextId" ColumnName="ContextId" />
+                <ScalarProperty Name="ParticipantId" ColumnName="ParticipantId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ParentContractId" ColumnName="ParentContractId" />
+                <ScalarProperty Name="Hash1" ColumnName="Hash1" />
+                <ScalarProperty Name="Hash2" ColumnName="Hash2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

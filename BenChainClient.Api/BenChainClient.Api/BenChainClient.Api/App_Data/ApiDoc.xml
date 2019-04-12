@@ -4,5 +4,11 @@
         <name>BenChainClient.Api</name>
     </assembly>
     <members>
+        <member name="M:BenChainClient.Api.Config.BenChainPortfolioAutoMapperConfig.IgnoreNullValues(AutoMapper.IProfileExpression)">
+            <summary>
+            Don't override target member's value when source value is null
+            </summary>
+            <param name="profileExpression"></param>
+        </member>
     </members>
 </doc>
