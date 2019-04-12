@@ -4,5 +4,86 @@
         <name>BenChain.Api</name>
     </assembly>
     <members>
+        <member name="M:BenChain.Api.Controllers.ContractController.AddContract(System.String,System.String,System.String)">
+            <summary>
+            Add a contract to the blockchain 
+            </summary>
+            <param name="contextId"></param>
+            <param name="hash1"></param>
+            <param name="hash2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChain.Api.Controllers.ValuesController.AddContract(System.String,System.String,System.String)">
+            <summary>
+            Add a contract to the blockchain 
+            </summary>
+            <param name="contextId"></param>
+            <param name="hash1"></param>
+            <param name="hash2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChain.Api.Models.ResponseModel.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Response model
+            </summary>
+            <param name="contextId"></param>
+            <param name="contractId"></param>
+            <param name="abi"></param>
+            <param name="bin"></param>
+        </member>
+        <member name="P:BenChain.Api.Models.ResponseModel.ContextId">
+            <summary>
+            Context ID
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ResponseModel.ContractId">
+            <summary>
+             Returns the contract ID
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ResponseModel.Abi">
+            <summary>
+            ABI file for reverse the SmartContract
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ResponseModel.Bin">
+            <summary>
+            Bin file is needed for the approving the contract
+            </summary>
+        </member>
+        <member name="T:BenChain.Api.Repository.ContractRepository">
+            <summary>
+            Contract repo
+            </summary>
+        </member>
+        <member name="M:BenChain.Api.Repository.ContractRepository.#ctor(Nethereum.RPC.Accounts.IAccount,System.String)">
+            <summary>
+            Contract repo
+            </summary>
+            <param name="callerAccount"></param>
+            <param name="networkUrl"></param>
+        </member>
+        <member name="T:BenChain.Api.Service.ContractService">
+            <summary>
+            Contract service
+            </summary>
+        </member>
+        <member name="M:BenChain.Api.Service.ContractService.AddContract(Nethereum.RPC.Accounts.IAccount,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="account"></param>
+            <param name="contextId"></param>
+            <param name="hash1"></param>
+            <param name="hash2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChain.Api.Service.ContractService.CreateGenericContract(System.Guid)">
+            <summary>
+            Create contract
+            </summary>
+            <param name="contextId"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

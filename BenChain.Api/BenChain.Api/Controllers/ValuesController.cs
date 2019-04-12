@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Http.Results;
+using BenChain.Api.Models;
 using Swashbuckle.Swagger.Annotations;
 
 namespace BenChain.Api.Controllers
@@ -20,12 +18,24 @@ namespace BenChain.Api.Controllers
       return Ok(new string[] { "value1", "value2" });
     }
 
+
+    /// <summary>
+    /// Add a contract to the blockchain 
+    /// </summary>
+    /// <param name="contextId"></param>
+    /// <param name="hash1"></param>
+    /// <param name="hash2"></param>
+    /// <returns></returns>
+    public ResponseModel AddContract(string contextId, string hash1, string hash2)
+    {
+      return new ResponseModel("Dummy", "Dump", "Context ID",  "ContractID");
+    }
+
     // GET api/values/5
     public string Get(int id)
     {
       return "value";
     }
-
     // POST api/values
     public void Post([FromBody]string value)
     {
