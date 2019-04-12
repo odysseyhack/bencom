@@ -60,3 +60,4 @@ BenChain.Web/node_modules
 
 **/bin/
 **/obj/
+**/.vs/
