@@ -60,3 +60,4 @@ FakesAssemblies/
 **/obj/
 **/.vs/
 **/node_modules/
+**/[Pp]ackages/
