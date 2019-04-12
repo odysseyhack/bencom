@@ -42,8 +42,6 @@ Visual Studio bestanden
 
 FakesAssemblies/
 
-BenChain.Web/node_modules
-
 /BenChain.Api/BenChain.Api/obj/Debug/BenChain.Api.csprojAssemblyReference.cache
 /BenChain.Api/BenChain.Api/obj/Debug
 /BenChain.Api/BenChain.Api/bin
@@ -61,3 +59,4 @@ BenChain.Web/node_modules
 **/bin/
 **/obj/
 **/.vs/
+**/node_modules/
