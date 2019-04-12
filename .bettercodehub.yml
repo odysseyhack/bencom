@@ -1,0 +1,9 @@
+exclude:
+#Config files
+- /BenChain.Api/BenChain.Api/App_Start/SwaggerConfig.cs
+- /BenChain.Api/BenChain.Api/App_Start/WebApiConfig.cs
+- /BenChainClient.Api/BenChainClient.Api/BenChainClient.Api/App_Start/SwaggerConfig.cs
+- /BenChainClient.Api/BenChainClient.Api/BenChainClient.Api/App_Start/WebApiConfig.cs
+#Vendor files
+- /BenChain.Web/BenChain.Web.AdminLTE/Content/Scripts/Vendor/.*
+- /BenChain.Web/BenChain.Web.AdminLTE/Content/Styles/Vendor/.*
