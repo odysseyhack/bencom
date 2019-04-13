@@ -4,6 +4,7 @@ exclude:
 - /BenChain.Api/BenChain.Api/App_Start/WebApiConfig.cs
 - /BenChainClient.Api/BenChainClient.Api/BenChainClient.Api/App_Start/SwaggerConfig.cs
 - /BenChainClient.Api/BenChainClient.Api/BenChainClient.Api/App_Start/WebApiConfig.cs
+- /BenChain.CommunityPoc.Web/config/.*
 #Vendor files
 - /BenChain.Web/BenChain.Web.AdminLTE/Content/Scripts/Vendor/.*
 - /BenChain.Web/BenChain.Web.AdminLTE/Content/Styles/Vendor/.*
