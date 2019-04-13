@@ -90,9 +90,9 @@ namespace BenChainClient.Api.Controllers
     /// <param name="participantModel"></param>
     /// <returns></returns>
     [Route("benchainupdate"), HttpPost, ResponseType(typeof(SignatoryModel))]
-    public async Task<IHttpActionResult> BenChainUpdate(SignatoryModel participantModel)
+    public async Task<IHttpActionResult> BenChainUpdate(SignatoryModel signatoryModel)
     {
-      var context = await _signatorServices.BenChainUpdate(participantModel);
+      var context = await _signatorServices.BenChainUpdate(signatoryModel);
       return Ok(context);
     }
   }

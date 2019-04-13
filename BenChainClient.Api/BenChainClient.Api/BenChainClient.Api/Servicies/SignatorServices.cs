@@ -110,7 +110,7 @@ namespace BenChainClient.Api.Servicies
       signatoryDb.BenChainABI = signatoryModel.BenChainABI;
       signatoryDb.BenChainBytescode = signatoryModel.BenChainBytescode;
 
-      AutoMapper.Mapper.Map(signatoryModel, signatoryDb);
+      
       _signatorRepository.Update(signatoryDb);
       _signatorRepository.Save(true, false, signatoryModel.Id);
 
