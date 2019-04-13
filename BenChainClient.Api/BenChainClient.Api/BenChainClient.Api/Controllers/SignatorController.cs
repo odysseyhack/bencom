@@ -53,13 +53,24 @@ namespace BenChainClient.Api.Controllers
     /// <param name="status"></param>
     /// <returns></returns>
     [Route("bystatus"), HttpGet, ResponseType(typeof(IEnumerable<SignatoryModel>))]
-    public async Task<IHttpActionResult> GetAllOpenByParticipant(Guid participantId, int status)
+    public async Task<IHttpActionResult> GetAllByParticipant(Guid participantId, int status)
     {
       var signators = await _signatorServices.GetAllByParticipant(participantId, status);
       return Ok(signators);
     }
 
-    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="participantId"></param>
+    /// <param name="status"></param>
+    /// <returns></returns>
+    [Route("bystatusnotopen"), HttpGet, ResponseType(typeof(IEnumerable<SignatoryModel>))]
+    public async Task<IHttpActionResult> GetAllNotOpenByParticipant(Guid participantId)
+    {
+      var signators = await _signatorServices.GetAllNotOpenByParticipant(participantId);
+      return Ok(signators);
+    }
 
     /// <summary>
     /// 

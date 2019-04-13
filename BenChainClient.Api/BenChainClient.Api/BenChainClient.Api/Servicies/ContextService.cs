@@ -38,6 +38,18 @@ namespace BenChainClient.Api.Servicies
         .ToList();
       return contexts;
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ParicipantId"></param>
+    /// <returns></returns>
+    public async Task<ICollection<ContextModel>> GetAllByParticipant(Guid ParicipantId)
+    {
+      var contexts = (await _contextRepository.GetAllWhere(c=>c.Creator == ParicipantId).ConfigureAwait(false)).OrderByDescending(c=>c.Created)
+        .Select(AutoMapper.Mapper.Map<ContextModel>)
+        .ToList();
+      return contexts;
+    }
 
     private static ContextModel NewContextModel(ContextModel contextModel)
     {
@@ -79,7 +91,7 @@ namespace BenChainClient.Api.Servicies
         _contextRepository.Save(false, false, contextModel.Id);
       }
 
-      //var contract = await BenChainApi.Client.Contract.AddContractWithHttpMessagesAsync("xxx", "has1", "has2").ConfigureAwait(false);
+      var contract = await BenChainApi.Client.Contract.AddContractWithHttpMessagesAsync(contextModel.Id, contextModel.Token1, contextModel.Token2).ConfigureAwait(false);
 
 
       //First Signator

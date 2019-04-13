@@ -18,7 +18,6 @@ namespace BenChain.Api
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using Models;
 
     /// <summary>
     /// BenChain API 2019.
@@ -49,11 +48,6 @@ namespace BenChain.Api
         /// Gets the IContract.
         /// </summary>
         public virtual IContract Contract { get; private set; }
-
-        /// <summary>
-        /// Gets the IValues.
-        /// </summary>
-        public virtual IValues Values { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ApiClient class.
@@ -239,7 +233,6 @@ namespace BenChain.Api
         private void Initialize()
         {
             this.Contract = new Contract(this);
-            this.Values = new Values(this);
             this.BaseUri = new Uri("http://benchain.api.bencom.nl");
             SerializationSettings = new JsonSerializerSettings
             {

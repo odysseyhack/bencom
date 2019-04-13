@@ -11,7 +11,6 @@ namespace BenChain.Api
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Microsoft.Rest;
-    using Models;
 
     /// <summary>
     /// BenChain API 2019.
@@ -44,11 +43,6 @@ namespace BenChain.Api
         /// Gets the IContract.
         /// </summary>
         IContract Contract { get; }
-
-        /// <summary>
-        /// Gets the IValues.
-        /// </summary>
-        IValues Values { get; }
 
     }
 }

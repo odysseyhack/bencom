@@ -10,7 +10,6 @@ namespace BenChain.Api
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Rest;
-    using Models;
 
     /// <summary>
     /// Extension methods for Contract.
@@ -47,13 +46,13 @@ namespace BenChain.Api
             /// </param>
             /// <param name='contextId'>
             /// </param>
-            /// <param name='hash1'>
+            /// <param name='token1'>
             /// </param>
-            /// <param name='hash2'>
+            /// <param name='token2'>
             /// </param>
-            public static ResponseModel AddContract(this IContract operations, string contextId, string hash1, string hash2)
+            public static object AddContract(this IContract operations, Guid contextId, string token1, string token2)
             {
-                return Task.Factory.StartNew(s => ((IContract)s).AddContractAsync(contextId, hash1, hash2), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IContract)s).AddContractAsync(contextId, token1, token2), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -64,16 +63,16 @@ namespace BenChain.Api
             /// </param>
             /// <param name='contextId'>
             /// </param>
-            /// <param name='hash1'>
+            /// <param name='token1'>
             /// </param>
-            /// <param name='hash2'>
+            /// <param name='token2'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ResponseModel> AddContractAsync(this IContract operations, string contextId, string hash1, string hash2, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> AddContractAsync(this IContract operations, Guid contextId, string token1, string token2, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.AddContractWithHttpMessagesAsync(contextId, hash1, hash2, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.AddContractWithHttpMessagesAsync(contextId, token1, token2, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

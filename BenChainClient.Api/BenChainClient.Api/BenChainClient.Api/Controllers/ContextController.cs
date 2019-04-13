@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -45,6 +46,18 @@ namespace BenChainClient.Api.Controllers
     public async Task<IHttpActionResult> GetAll()
     {
       var contexts = await _contextService.GetAll();
+      return Ok(contexts);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="participant"></param>
+    /// <returns></returns>
+    [Route("participant"), HttpGet, ResponseType(typeof(IEnumerable<ContextModel>))]
+    public async Task<IHttpActionResult> GetAll(Guid participant)
+    {
+      var contexts = await _contextService.GetAllByParticipant(participant);
       return Ok(contexts);
     }
 

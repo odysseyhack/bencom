@@ -27,5 +27,12 @@ namespace BenChainClient.Api.Servicies
     /// <param name="benChainContextModel"></param>
     /// <returns></returns>
     Task<BenChainContextModel> UpdateBenChainStatus(BenChainContextModel benChainContextModel);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ParicipantId"></param>
+    /// <returns></returns>
+    Task<ICollection<ContextModel>> GetAllByParticipant(Guid ParicipantId);
   }
 }

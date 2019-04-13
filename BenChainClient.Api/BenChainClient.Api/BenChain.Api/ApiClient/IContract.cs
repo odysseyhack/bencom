@@ -10,7 +10,6 @@ namespace BenChain.Api
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Rest;
-    using Models;
 
     /// <summary>
     /// Contract operations.
@@ -29,9 +28,9 @@ namespace BenChain.Api
         /// </summary>
         /// <param name='contextId'>
         /// </param>
-        /// <param name='hash1'>
+        /// <param name='token1'>
         /// </param>
-        /// <param name='hash2'>
+        /// <param name='token2'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -39,6 +38,6 @@ namespace BenChain.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<ResponseModel>> AddContractWithHttpMessagesAsync(string contextId, string hash1, string hash2, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

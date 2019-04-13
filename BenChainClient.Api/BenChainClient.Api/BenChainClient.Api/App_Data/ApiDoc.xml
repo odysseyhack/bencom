@@ -53,6 +53,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:BenChainClient.Api.Controllers.ContextController.GetAll(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="participant"></param>
+            <returns></returns>
+        </member>
         <member name="M:BenChainClient.Api.Controllers.ContextController.CreatedOrUpdate(BenChainClient.Api.Models.ContextModel)">
             <summary>
             
@@ -113,7 +120,15 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:BenChainClient.Api.Controllers.SignatorController.GetAllOpenByParticipant(System.Guid,System.Int32)">
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.GetAllByParticipant(System.Guid,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="participantId"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.GetAllNotOpenByParticipant(System.Guid)">
             <summary>
             
             </summary>
@@ -317,6 +332,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:BenChainClient.Api.Servicies.ContextService.GetAllByParticipant(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="ParicipantId"></param>
+            <returns></returns>
+        </member>
         <member name="M:BenChainClient.Api.Servicies.ContextService.CreateOrUpdate(BenChainClient.Api.Models.ContextModel)">
             <inheritdoc />
             <summary>
@@ -359,6 +381,13 @@
             
             </summary>
             <param name="benChainContextModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.IContextService.GetAllByParticipant(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="ParicipantId"></param>
             <returns></returns>
         </member>
         <member name="T:BenChainClient.Api.Servicies.ParticipantService">
@@ -411,6 +440,13 @@
             </summary>
             <param name="participantId"></param>
             <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.SignatorServices.GetAllNotOpenByParticipant(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="participantId"></param>
             <returns></returns>
         </member>
         <member name="M:BenChainClient.Api.Servicies.SignatorServices.CreateOrUpdate(BenChainClient.Api.Models.SignatoryModel)">

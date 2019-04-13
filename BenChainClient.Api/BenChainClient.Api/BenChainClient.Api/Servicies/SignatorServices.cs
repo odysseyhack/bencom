@@ -51,6 +51,18 @@ namespace BenChainClient.Api.Servicies
       return signators;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="participantId"></param>
+    /// <returns></returns>
+    public async Task<ICollection<SignatoryModel>> GetAllNotOpenByParticipant(Guid participantId)
+    {
+      var signators = (await _signatorRepository.GetAllWhere(s => s.ParticipantId == participantId && s.Status != 0).ConfigureAwait(false))
+        .Select(AutoMapper.Mapper.Map<SignatoryModel>)
+        .ToList();
+      return signators;
+    }
 
     /// <summary>
     /// 
@@ -88,20 +100,19 @@ namespace BenChainClient.Api.Servicies
     /// <returns></returns>
     public async Task<SignatoryModel> BenChainUpdate(SignatoryModel signatoryModel)
     {
-      if (signatoryModel.ContextId != Guid.Empty)
-      {
-        var signatoryDb = await _signatorRepository.FindBy(s => s.ContextId == signatoryModel.ContextId).ConfigureAwait(false);
-        if (signatoryDb != null)
-        {
-          signatoryDb.BenChainContractId = signatoryModel.BenChainContractId;
-          signatoryDb.BenChainABI = signatoryModel.BenChainABI;
-          signatoryDb.BenChainBytescode = signatoryModel.BenChainBytescode;
+      if (signatoryModel.ContextId == Guid.Empty) return signatoryModel;
 
-          AutoMapper.Mapper.Map(signatoryModel, signatoryDb);
-          _signatorRepository.Update(signatoryDb);
-          _signatorRepository.Save(true, false, signatoryModel.Id);
-        }
-      }
+      var signatoryDb = await _signatorRepository.FindBy(s => s.ContextId == signatoryModel.ContextId).ConfigureAwait(false);
+
+      if (signatoryDb == null) return signatoryModel;
+
+      signatoryDb.BenChainContractId = signatoryModel.BenChainContractId;
+      signatoryDb.BenChainABI = signatoryModel.BenChainABI;
+      signatoryDb.BenChainBytescode = signatoryModel.BenChainBytescode;
+
+      AutoMapper.Mapper.Map(signatoryModel, signatoryDb);
+      _signatorRepository.Update(signatoryDb);
+      _signatorRepository.Save(true, false, signatoryModel.Id);
 
       return signatoryModel;
     }

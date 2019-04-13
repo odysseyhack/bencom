@@ -15,5 +15,6 @@ namespace BenChainClient.Api.Servicies
     Task<SignatoryModel> BenChainUpdate(SignatoryModel signatoryModel);
 
     Task<ICollection<SignatoryModel>> GetAllByParticipant(Guid participantId, int status);
+    Task<ICollection<SignatoryModel>> GetAllNotOpenByParticipant(Guid participantId);
   }
 }

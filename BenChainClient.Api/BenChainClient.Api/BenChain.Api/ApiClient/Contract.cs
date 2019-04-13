@@ -17,7 +17,6 @@ namespace BenChain.Api
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using Models;
 
     /// <summary>
     /// Contract operations.
@@ -159,9 +158,9 @@ namespace BenChain.Api
         /// </summary>
         /// <param name='contextId'>
         /// </param>
-        /// <param name='hash1'>
+        /// <param name='token1'>
         /// </param>
-        /// <param name='hash2'>
+        /// <param name='token2'>
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -172,19 +171,15 @@ namespace BenChain.Api
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<ResponseModel>> AddContractWithHttpMessagesAsync(string contextId, string hash1, string hash2, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (contextId == null)
+            if (token1 == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "contextId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "token1");
             }
-            if (hash1 == null)
+            if (token2 == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "hash1");
-            }
-            if (hash2 == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "hash2");
+                throw new ValidationException(ValidationRules.CannotBeNull, "token2");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -194,8 +189,8 @@ namespace BenChain.Api
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("contextId", contextId);
-                tracingParameters.Add("hash1", hash1);
-                tracingParameters.Add("hash2", hash2);
+                tracingParameters.Add("token1", token1);
+                tracingParameters.Add("token2", token2);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "AddContract", tracingParameters);
             }
@@ -203,17 +198,14 @@ namespace BenChain.Api
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new Uri(new Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/contract/contract").ToString();
             List<string> _queryParameters = new List<string>();
-            if (contextId != null)
+            _queryParameters.Add(string.Format("contextId={0}", Uri.EscapeDataString(SafeJsonConvert.SerializeObject(contextId, this.Client.SerializationSettings).Trim('"'))));
+            if (token1 != null)
             {
-                _queryParameters.Add(string.Format("contextId={0}", Uri.EscapeDataString(contextId)));
+                _queryParameters.Add(string.Format("token1={0}", Uri.EscapeDataString(token1)));
             }
-            if (hash1 != null)
+            if (token2 != null)
             {
-                _queryParameters.Add(string.Format("hash1={0}", Uri.EscapeDataString(hash1)));
-            }
-            if (hash2 != null)
-            {
-                _queryParameters.Add(string.Format("hash2={0}", Uri.EscapeDataString(hash2)));
+                _queryParameters.Add(string.Format("token2={0}", Uri.EscapeDataString(token2)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -277,7 +269,7 @@ namespace BenChain.Api
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<ResponseModel>();
+            var _result = new HttpOperationResponse<object>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -286,7 +278,7 @@ namespace BenChain.Api
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<ResponseModel>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<object>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
