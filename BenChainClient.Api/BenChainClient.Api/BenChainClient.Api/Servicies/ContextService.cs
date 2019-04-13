@@ -39,6 +39,19 @@ namespace BenChainClient.Api.Servicies
       return contexts;
     }
 
+    private static ContextModel NewContextModel(ContextModel contextModel)
+    {
+      contextModel.Id = Guid.NewGuid();
+      contextModel.Token1 =
+        Helpers.Hash256Tool.Sha256HashString(contextModel.Id + contextModel.Creator.ToString() + "1");
+      contextModel.Token2 =
+        Helpers.Hash256Tool.Sha256HashString(contextModel.Id + contextModel.Creator.ToString() + "2");
+      contextModel.Created = DateTime.Now;
+      contextModel.Modified = DateTime.Now;
+
+      return contextModel;
+    }
+
     /// <inheritdoc />
     /// <summary>
     /// </summary>
@@ -48,13 +61,7 @@ namespace BenChainClient.Api.Servicies
     {
       if (contextModel.Id == Guid.Empty)
       {
-        contextModel.Id = Guid.NewGuid();
-        contextModel.Token1 =
-          Helpers.Hash256Tool.Sha256HashString(contextModel.Id + contextModel.Creator.ToString() + "1");
-        contextModel.Token2 =
-          Helpers.Hash256Tool.Sha256HashString(contextModel.Id + contextModel.Creator.ToString() + "2");
-        contextModel.Created = DateTime.Now;
-        contextModel.Modified = DateTime.Now;
+        contextModel = NewContextModel(contextModel);
       }
 
       var contextDb = await _contextRepository.FindBy(s => s.Id == contextModel.Id).ConfigureAwait(false);
@@ -72,44 +79,20 @@ namespace BenChainClient.Api.Servicies
         _contextRepository.Save(false, false, contextModel.Id);
       }
 
-      var contractid = Guid.NewGuid().ToString();
+      //var contract = await BenChainApi.Client.Contract.AddContractWithHttpMessagesAsync("xxx", "has1", "has2").ConfigureAwait(false);
 
-      //var contractid = BenChainApi.Client.Contract.GetEnergyContractAsync(contractId);
+
       //First Signator
-      var signator = new SignatoryModel
-      {
-        Id = Guid.NewGuid(),
-        ParticipantId = contextModel.Signator,
-        ContextId = contextModel.Id,
-        BenChainContractId = contractid,
-        Status = 0,
-        Modified = DateTime.Now,
-        OrderId = 0,
-        BenChainABI = "",
-        BenChainBytescode = "",
-      };
-      await _signatorServices.CreateOrUpdate(signator);
-
+      await _signatorServices.CreateOrUpdate(CreatedNewSignator(contextModel));
 
       switch (contextModel.Ref)
       {
         case 0:
           //Case 1
           //Second Signator
-          signator = new SignatoryModel
-          {
-            Id = Guid.NewGuid(),
-            ParticipantId = Guid.NewGuid(),
-            ContextId = contextModel.Id,
-            Status = 0,
-            Modified = DateTime.Now,
-            OrderId = 1,
-            BenChainABI = "",
-            BenChainBytescode = "",
-            BenChainContractId = ""
-          };
+          var signator = CreatedNewSignator(contextModel);
+          signator.ParticipantId = Guid.NewGuid(); // tweede 
           await _signatorServices.CreateOrUpdate(signator);
-
           break;
         case 1:
           //Case 2
@@ -124,7 +107,22 @@ namespace BenChainClient.Api.Servicies
       return contextModel;
     }
 
-    
+    private static SignatoryModel CreatedNewSignator(ContextModel contextModel)
+    {
+      var signator = new SignatoryModel
+      {
+        Id = Guid.NewGuid(),
+        ParticipantId = contextModel.Signator,
+        ContextId = contextModel.Id,
+        BenChainContractId = "",
+        Status = 0,
+        Modified = DateTime.Now,
+        OrderId = 0,
+        BenChainABI = "",
+        BenChainBytescode = "",
+      };
+      return signator;
+    }
 
 
     /// <inheritdoc />
