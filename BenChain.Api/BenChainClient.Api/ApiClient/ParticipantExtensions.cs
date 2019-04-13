@@ -39,5 +39,31 @@ namespace BenChainClient.Api
                 }
             }
 
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='participantModel'>
+            /// </param>
+            public static ParticipantModel CreatedOrUpdate(this IParticipant operations, ParticipantModel participantModel)
+            {
+                return Task.Factory.StartNew(s => ((IParticipant)s).CreatedOrUpdateAsync(participantModel), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='participantModel'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ParticipantModel> CreatedOrUpdateAsync(this IParticipant operations, ParticipantModel participantModel, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreatedOrUpdateWithHttpMessagesAsync(participantModel, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
     }
 }

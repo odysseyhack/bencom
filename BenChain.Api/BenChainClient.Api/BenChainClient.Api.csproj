@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.20\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -53,14 +53,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiClient\ApiClient.cs" />
+    <Compile Include="ApiClient\Appendix.cs" />
+    <Compile Include="ApiClient\AppendixExtensions.cs" />
     <Compile Include="ApiClient\Context.cs" />
     <Compile Include="ApiClient\ContextExtensions.cs" />
     <Compile Include="ApiClient\IApiClient.cs" />
+    <Compile Include="ApiClient\IAppendix.cs" />
     <Compile Include="ApiClient\IContext.cs" />
     <Compile Include="ApiClient\IParticipant.cs" />
+    <Compile Include="ApiClient\ISignator.cs" />
+    <Compile Include="ApiClient\Models\BenChainContextModel.cs" />
+    <Compile Include="ApiClient\Models\ContextModel.cs" />
     <Compile Include="ApiClient\Models\ParticipantModel.cs" />
+    <Compile Include="ApiClient\Models\SignatoryModel.cs" />
     <Compile Include="ApiClient\Participant.cs" />
     <Compile Include="ApiClient\ParticipantExtensions.cs" />
+    <Compile Include="ApiClient\Signator.cs" />
+    <Compile Include="ApiClient\SignatorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

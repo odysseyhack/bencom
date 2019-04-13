@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BenChain.Api.GenericContract.CQS;
 using BenChain.Api.GenericContract.Service;
 using BenChain.Api.Helpers;
+using BenChain.Api.Models;
 using BenChain.Api.Repository;
 using Nethereum.HdWallet;
 using Nethereum.Hex.HexTypes;
@@ -19,8 +20,13 @@ namespace BenChain.Api.Service
   {
     private readonly string _blockChainUrl;
     private const int DefaultGasAmount = 1000000;
+    private IAccount _account;
+    private readonly IContractRepository _contractRepository;
 
 
+    /// <summary>
+    /// 
+    /// </summary>
     public ContractService()
     {
       var blockChainUrl = ConfigurationManager.AppSettings["BlockChainUrl"];
@@ -28,41 +34,56 @@ namespace BenChain.Api.Service
       var mnemonic = ConfigurationManager.AppSettings["WalletMnemonic"];
 
       var wallet = new Wallet(mnemonic, null);
+      _account = wallet.GetAccount(0);
 
-      var account = wallet.GetAccount(0);
-      var contractRepo = new ContractRepository(account, blockChainUrl);
+      _contractRepository = new ContractRepository(_account, blockChainUrl);
+      
 
       //var x = BenChainClientApi.Client.Participant.GetAllWithHttpMessagesAsync();
 
     }
 
+
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="account"></param>
-    /// <param name="contextId"></param>
-    /// <param name="hash1"></param>
-    /// <param name="hash2"></param>
+    /// <param name="contractBindingModel"></param>
     /// <returns></returns>
-    public async Task<string> AddContract(IAccount account, string contextId, string hash1, string hash2)
+    public async Task<ResponseModel> AddContract(ContractBindingModel contractBindingModel)
     {
       var amountToSend = new HexBigInteger(1000000000000000000);
 
-      var web3 = new Web3(account, _blockChainUrl);
-      var contract = CreateGenericContract(new Guid("TestGuid"));
-      var service = await GenericContractService.DeployContractAndGetServiceAsync(web3, contract);
+      var web3 = new Web3(_account, _blockChainUrl);
+
+      var deployment = CreateGenericContract(new Guid("TestGuid"));
+      var service = await GenericContractService.DeployContractAndGetServiceAsync(web3, deployment);
       var apporveFunction = await service.ApproveRequestAndWaitForReceiptAsync(
         new ApproveFunction
         {
           AmountToSend = amountToSend, // One ether
-          FromAddress = account.Address,
+          FromAddress = _account.Address,
           Gas = DefaultGasAmount
         });
 
 
+      var contractId = Guid.NewGuid();
+      var abi =  _contractRepository.GetAbi();
+      var bin = _contractRepository.GetBin();
 
-      return apporveFunction.TransactionHash.ToString();
+      var responseModel = new ResponseModel(contractBindingModel.ContextId, contractId.ToString(), bin, abi);
+
+      _ =  BenChainClientApi.Client.Context.UpdateBenChainStatusWithHttpMessagesAsync(new BenChainClient.Api.Models.BenChainContextModel
+      {
+        ABI = abi,
+        Bytescode = bin,
+        ContractId = contractId.ToString(),
+        ContextId = contractBindingModel.ContextId
+      });
+
+      return responseModel;
     }
+
+   
 
     /// <summary>
     /// Create contract

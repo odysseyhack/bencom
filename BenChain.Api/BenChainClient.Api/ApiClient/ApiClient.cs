@@ -46,6 +46,11 @@ namespace BenChainClient.Api
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// Gets the IAppendix.
+        /// </summary>
+        public virtual IAppendix Appendix { get; private set; }
+
+        /// <summary>
         /// Gets the IContext.
         /// </summary>
         public virtual IContext Context { get; private set; }
@@ -54,6 +59,11 @@ namespace BenChainClient.Api
         /// Gets the IParticipant.
         /// </summary>
         public virtual IParticipant Participant { get; private set; }
+
+        /// <summary>
+        /// Gets the ISignator.
+        /// </summary>
+        public virtual ISignator Signator { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ApiClient class.
@@ -238,8 +248,10 @@ namespace BenChainClient.Api
         /// </summary>
         private void Initialize()
         {
+            this.Appendix = new Appendix(this);
             this.Context = new Context(this);
             this.Participant = new Participant(this);
+            this.Signator = new Signator(this);
             this.BaseUri = new Uri("http://benchain.client.api.bencom.nl");
             SerializationSettings = new JsonSerializerSettings
             {

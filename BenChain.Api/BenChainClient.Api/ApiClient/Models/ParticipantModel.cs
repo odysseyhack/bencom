@@ -21,14 +21,14 @@ namespace BenChainClient.Api.Models
         /// <summary>
         /// Initializes a new instance of the ParticipantModel class.
         /// </summary>
-        public ParticipantModel(Guid? id = default(Guid?), string name = default(string), string email = default(string), string phone = default(string), string signatorLevel = default(string), string participantHash = default(string))
+        public ParticipantModel(Guid? id = default(Guid?), string name = default(string), string email = default(string), string phone = default(string), int? signatorLevel = default(int?), string hashId = default(string))
         {
             Id = id;
             Name = name;
             Email = email;
             Phone = phone;
             SignatorLevel = signatorLevel;
-            ParticipantHash = participantHash;
+            HashId = hashId;
         }
 
         /// <summary>
@@ -54,12 +54,12 @@ namespace BenChainClient.Api.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "SignatorLevel")]
-        public string SignatorLevel { get; set; }
+        public int? SignatorLevel { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "ParticipantHash")]
-        public string ParticipantHash { get; set; }
+        [JsonProperty(PropertyName = "HashId")]
+        public string HashId { get; set; }
 
     }
 }

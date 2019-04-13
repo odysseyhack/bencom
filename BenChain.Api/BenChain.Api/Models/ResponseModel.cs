@@ -1,5 +1,10 @@
-﻿namespace BenChain.Api.Models
+﻿using System;
+
+namespace BenChain.Api.Models
 {
+  /// <summary>
+  /// 
+  /// </summary>
   public class ResponseModel
   {
     /// <summary>
@@ -9,7 +14,7 @@
     /// <param name="contractId"></param>
     /// <param name="abi"></param>
     /// <param name="bin"></param>
-    public ResponseModel(string contextId, string contractId, string abi, string bin)
+    public ResponseModel(Guid contextId, string contractId, string abi, string bin)
     {
       ContextId = contextId;
       ContractId = contractId;
@@ -20,7 +25,7 @@
     /// <summary>
     /// Context ID
     /// </summary>
-    public string ContextId { get; set; }
+    public Guid ContextId { get; set; }
 
 
     /// <summary>

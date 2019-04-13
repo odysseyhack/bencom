@@ -41,6 +41,11 @@ namespace BenChainClient.Api
 
 
         /// <summary>
+        /// Gets the IAppendix.
+        /// </summary>
+        IAppendix Appendix { get; }
+
+        /// <summary>
         /// Gets the IContext.
         /// </summary>
         IContext Context { get; }
@@ -49,6 +54,11 @@ namespace BenChainClient.Api
         /// Gets the IParticipant.
         /// </summary>
         IParticipant Participant { get; }
+
+        /// <summary>
+        /// Gets the ISignator.
+        /// </summary>
+        ISignator Signator { get; }
 
     }
 }

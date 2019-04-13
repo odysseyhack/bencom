@@ -4,25 +4,41 @@
         <name>BenChain.Api</name>
     </assembly>
     <members>
-        <member name="M:BenChain.Api.Controllers.ContractController.AddContract(System.String,System.String,System.String)">
+        <member name="M:BenChain.Api.Controllers.ContractController.AddContract(System.Guid,System.String,System.String)">
             <summary>
             Add a contract to the blockchain 
             </summary>
             <param name="contextId"></param>
-            <param name="hash1"></param>
-            <param name="hash2"></param>
+            <param name="token1"></param>
+            <param name="token2"></param>
             <returns></returns>
         </member>
-        <member name="M:BenChain.Api.Controllers.ValuesController.AddContract(System.String,System.String,System.String)">
+        <member name="T:BenChain.Api.Models.ContractBindingModel">
             <summary>
-            Add a contract to the blockchain 
+            Contract binding model
             </summary>
-            <param name="contextId"></param>
-            <param name="hash1"></param>
-            <param name="hash2"></param>
-            <returns></returns>
         </member>
-        <member name="M:BenChain.Api.Models.ResponseModel.#ctor(System.String,System.String,System.String,System.String)">
+        <member name="P:BenChain.Api.Models.ContractBindingModel.ContextId">
+            <summary>
+            Content ID
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ContractBindingModel.Token1">
+            <summary>
+            Token 1
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ContractBindingModel.Token2">
+            <summary>
+            Token 2
+            </summary>
+        </member>
+        <member name="T:BenChain.Api.Models.ResponseModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChain.Api.Models.ResponseModel.#ctor(System.Guid,System.String,System.String,System.String)">
             <summary>
             Response model
             </summary>
@@ -63,19 +79,39 @@
             <param name="callerAccount"></param>
             <param name="networkUrl"></param>
         </member>
+        <member name="M:BenChain.Api.Repository.ContractRepository.#ctor(Microsoft.Extensions.Logging.ILogger{BenChain.Api.Repository.ContractRepository})">
+            <summary>
+            Initialize the repository for working with a local Geth Blockchain
+            </summary>
+            <param name="logger">The Logger to use</param>
+        </member>
+        <member name="M:BenChain.Api.Repository.ContractRepository.GetAbi">
+            <summary>
+            Return ABI
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BenChain.Api.Repository.ContractRepository.GetBin">
+            <summary>
+            Return contract byte code
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:BenChain.Api.Service.ContractService">
             <summary>
             Contract service
             </summary>
         </member>
-        <member name="M:BenChain.Api.Service.ContractService.AddContract(Nethereum.RPC.Accounts.IAccount,System.String,System.String,System.String)">
+        <member name="M:BenChain.Api.Service.ContractService.#ctor">
             <summary>
             
             </summary>
-            <param name="account"></param>
-            <param name="contextId"></param>
-            <param name="hash1"></param>
-            <param name="hash2"></param>
+        </member>
+        <member name="M:BenChain.Api.Service.ContractService.AddContract(BenChain.Api.Models.ContractBindingModel)">
+            <summary>
+            
+            </summary>
+            <param name="contractBindingModel"></param>
             <returns></returns>
         </member>
         <member name="M:BenChain.Api.Service.ContractService.CreateGenericContract(System.Guid)">

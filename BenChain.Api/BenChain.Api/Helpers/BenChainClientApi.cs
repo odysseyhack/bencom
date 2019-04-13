@@ -4,7 +4,7 @@ using Microsoft.Rest;
 
 namespace BenChain.Api.Helpers
 {
-  public class BenChainClientApi
+  public static class BenChainClientApi
   {
     static BenChainClientApi()
     {
