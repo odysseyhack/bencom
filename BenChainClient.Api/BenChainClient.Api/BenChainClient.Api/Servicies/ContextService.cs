@@ -16,7 +16,7 @@ namespace BenChainClient.Api.Servicies
     private readonly ContextRepository _contextRepository;
     private readonly SignatorServices _signatorServices;
     private readonly SignatorRepository _signatorRepository;
-
+    private readonly ParticipantService _participantService;
     /// <summary>
     /// 
     /// </summary>
@@ -25,6 +25,7 @@ namespace BenChainClient.Api.Servicies
       _contextRepository = new ContextRepository();
       _signatorRepository = new SignatorRepository();
       _signatorServices = new SignatorServices();
+      _participantService = new ParticipantService();
     }
 
     /// <inheritdoc />
@@ -48,6 +49,10 @@ namespace BenChainClient.Api.Servicies
       var contexts = (await _contextRepository.GetAllWhere(c=>c.Creator == ParicipantId).ConfigureAwait(false)).OrderByDescending(c=>c.Created)
         .Select(AutoMapper.Mapper.Map<ContextModel>)
         .ToList();
+      foreach (var context in contexts)
+      {
+        context.SignatorName = (await _participantService.GetById(context.Signator).ConfigureAwait(false)).Name;
+      }
       return contexts;
     }
 

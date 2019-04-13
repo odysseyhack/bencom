@@ -53,7 +53,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:BenChainClient.Api.Controllers.ContextController.GetAll(System.Guid)">
+        <member name="M:BenChainClient.Api.Controllers.ContextController.GetAllByParticipant(System.Guid)">
             <summary>
             
             </summary>
@@ -256,6 +256,11 @@
             
             </summary>
         </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Title">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:BenChainClient.Api.Models.ContextModel.Id">
             <summary>
             
@@ -302,6 +307,11 @@
             </summary>
         </member>
         <member name="P:BenChainClient.Api.Models.ContextModel.Signator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.SignatorName">
             <summary>
             
             </summary>
@@ -404,6 +414,13 @@
             <summary>
             
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ParticipantService.GetById(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="Id"></param>
             <returns></returns>
         </member>
         <member name="M:BenChainClient.Api.Servicies.ParticipantService.CreateOrUpdate(BenChainClient.Api.Models.ParticipantModel)">

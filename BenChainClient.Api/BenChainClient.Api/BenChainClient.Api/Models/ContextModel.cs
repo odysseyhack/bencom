@@ -15,6 +15,10 @@ namespace BenChainClient.Api.Models
     /// <summary>
     /// 
     /// </summary>
+    public string Title { get; set; }
+    /// <summary>
+    /// 
+    /// </summary>
     public Guid Id { get; set; }
     /// <summary>
     /// 
@@ -51,7 +55,11 @@ namespace BenChainClient.Api.Models
     /// <summary>
     /// 
     /// </summary>
-    public Guid Signator { get; set; }
+    public Guid Signator { get; set;}
+    /// <summary>
+    /// 
+    /// </summary>
+    public string  SignatorName { get; set; }
     /// <summary>
     /// 
     /// </summary>

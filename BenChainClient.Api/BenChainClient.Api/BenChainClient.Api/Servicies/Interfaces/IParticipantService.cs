@@ -11,5 +11,6 @@ namespace BenChainClient.Api.Servicies
   {
     Task<ICollection<ParticipantModel>> GetAll();
     Task<ParticipantModel> CreateOrUpdate(ParticipantModel participantModel);
+    Task<ParticipantModel> GetById(Guid Id);
   }
 }

@@ -34,7 +34,17 @@ namespace BenChainClient.Api.Servicies
         .ToList();
       return paricipants;
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
+    public async Task<ParticipantModel> GetById(Guid Id)
+    {
+      var paricipants = (await _participantRepository.GetAllWhere(s=>s.Id == Id).ConfigureAwait(false))
+        .Select(AutoMapper.Mapper.Map<ParticipantModel>).FirstOrDefault();
+      return paricipants;
+    }
     /// <summary>
     /// 
     /// </summary>
