@@ -79,12 +79,6 @@
             <param name="callerAccount"></param>
             <param name="networkUrl"></param>
         </member>
-        <member name="M:BenChain.Api.Repository.ContractRepository.#ctor(Microsoft.Extensions.Logging.ILogger{BenChain.Api.Repository.ContractRepository})">
-            <summary>
-            Initialize the repository for working with a local Geth Blockchain
-            </summary>
-            <param name="logger">The Logger to use</param>
-        </member>
         <member name="M:BenChain.Api.Repository.ContractRepository.GetAbi">
             <summary>
             Return ABI

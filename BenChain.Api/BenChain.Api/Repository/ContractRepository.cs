@@ -1,11 +1,10 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Nethereum.Geth;
+﻿using Microsoft.Extensions.Logging;
 using Nethereum.Hex.HexTypes;
 using Nethereum.RPC.Accounts;
 using Nethereum.Web3;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace BenChain.Api.Repository
 {
@@ -40,22 +39,7 @@ namespace BenChain.Api.Repository
 
     }
 
-    /// <summary>
-    /// Initialize the repository for working with a local Geth Blockchain
-    /// </summary>
-    /// <param name="logger">The Logger to use</param>
-    public ContractRepository(ILogger<ContractRepository> logger)
-    {
-      var web3Geth = new Web3Geth();
-
-      web3Geth.Miner.Start.SendRequestAsync().ContinueWith(t =>
-      {
-        if (t.IsFaulted)
-        {
-          logger.LogError(t.Id, "Error while start mining");
-        }
-      });
-    }
+    
 
     private static string GetStringFromStream(Stream stream)
     {
