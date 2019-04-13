@@ -7,3 +7,6 @@ exclude:
 #Vendor files
 - /BenChain.Web/BenChain.Web.AdminLTE/Content/Scripts/Vendor/.*
 - /BenChain.Web/BenChain.Web.AdminLTE/Content/Styles/Vendor/.*
+#Generated swagger clients
+- /BenChainClient.Api/BenChainClient.Api/BenChain.Api/.*
+- /BenChain.Api/BenChainClient.Api/.*
