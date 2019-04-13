@@ -25,6 +25,10 @@ namespace BenChainClient.Api.Servicies
       _signatorRepository = new SignatorRepository();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public async Task<ICollection<SignatoryModel>> GetAll()
     {
       var signators = (await _signatorRepository.GetAll().ConfigureAwait(false))
@@ -103,8 +107,8 @@ namespace BenChainClient.Api.Servicies
     }
 
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     public void Dispose()
     {

@@ -27,8 +27,8 @@ namespace BenChainClient.Api.Servicies
       _signatorServices = new SignatorServices();
     }
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     /// <returns></returns>
     public async Task<ICollection<ContextModel>> GetAll()
@@ -39,8 +39,8 @@ namespace BenChainClient.Api.Servicies
       return contexts;
     }
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     /// <param name="contextModel"></param>
     /// <returns></returns>
@@ -127,8 +127,8 @@ namespace BenChainClient.Api.Servicies
     
 
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     /// <param name="benChainContextModel"></param>
     /// <returns></returns>
