@@ -200,8 +200,10 @@
     <Compile Include="BenChainApi.cs" />
     <Compile Include="Config\BenChainPortfolioAutoMapperConfig.cs" />
     <Compile Include="Config\DoNotMapNullOrDefaultValueAttribute.cs" />
+    <Compile Include="Controllers\AppendixController.cs" />
     <Compile Include="Controllers\ContextController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\SignatorController.cs" />
     <Compile Include="DbEntities\Appendix.cs">
       <DependentUpon>BenChainDb.tt</DependentUpon>
     </Compile>
@@ -235,21 +237,30 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FormatStrings.cs" />
+    <Compile Include="Helpers\Hash256Helper.cs" />
+    <Compile Include="Helpers\RegularExpressions.cs" />
+    <Compile Include="Models\BenChainContextModel.cs" />
     <Compile Include="Models\ContextModel.cs" />
     <Compile Include="Models\ParticipantModel.cs" />
+    <Compile Include="Models\SignatoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContextRepository.cs" />
     <Compile Include="Repositories\Interfaces\IContextRepository.cs" />
     <Compile Include="Repositories\Interfaces\IParticipantRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ISignatorRepository.cs" />
     <Compile Include="Repositories\ParticipantRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Repositories\SignatorRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Servicies\ContextService.cs" />
     <Compile Include="Servicies\Interfaces\IContextService.cs" />
     <Compile Include="Servicies\Interfaces\IParticipantService.cs" />
+    <Compile Include="Servicies\Interfaces\ISignatorServices.cs" />
     <Compile Include="Servicies\ParticipantService.cs" />
+    <Compile Include="Servicies\SignatorServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ApiDoc.xml" />

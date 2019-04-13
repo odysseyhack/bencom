@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using AutoMapper;
 using BenChainClient.Api.DbEntities;
 using BenChainClient.Api.Models;
@@ -39,6 +36,12 @@ namespace BenChainClient.Api.Config
     {
       cfg.CreateMap<Participant, ParticipantModel>();
       cfg.CreateMap<ParticipantModel, Participant>();
+
+      cfg.CreateMap<Context, ContextModel>();
+      cfg.CreateMap<ContextModel, Context>();
+
+      cfg.CreateMap<Signatory, SignatoryModel>();
+      cfg.CreateMap<SignatoryModel, Signatory>();
     }
   }
 }

@@ -5,5 +5,8 @@ using System.Web;
 
 namespace BenChainClient.Api.Config
 {
+  /// <summary>
+  /// 
+  /// </summary>
   public class DoNotMapNullOrDefaultValueAttribute : Attribute { }
 }

@@ -14,30 +14,17 @@ namespace BenChainClient.Api.DbEntities
     
     public partial class Context
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Context()
-        {
-            this.Appendix = new HashSet<Appendix>();
-            this.Signatory = new HashSet<Signatory>();
-        }
-    
         public System.Guid Id { get; set; }
-        public System.Guid RefId { get; set; }
         public System.DateTime Created { get; set; }
         public System.DateTime Modified { get; set; }
-        public System.Guid BaseSystem { get; set; }
-        public System.DateTime EffectiveEnd { get; set; }
-        public System.Guid Type { get; set; }
+        public System.DateTime EffectiveEndDate { get; set; }
         public int Status { get; set; }
         public string Note { get; set; }
         public string ExplanationNote { get; set; }
-        public string Hash { get; set; }
-        public System.Guid Creator { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Appendix> Appendix { get; set; }
-        public virtual Reference Reference { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Signatory> Signatory { get; set; }
+        public Nullable<System.Guid> Creator { get; set; }
+        public Nullable<System.Guid> Signator { get; set; }
+        public string Token1 { get; set; }
+        public string Token2 { get; set; }
+        public int Ref { get; set; }
     }
 }

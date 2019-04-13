@@ -4,11 +4,427 @@
         <name>BenChainClient.Api</name>
     </assembly>
     <members>
+        <member name="T:BenChainClient.Api.BenChainApi">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.BenChainApi.Client">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:BenChainClient.Api.Config.BenChainPortfolioAutoMapperConfig.IgnoreNullValues(AutoMapper.IProfileExpression)">
             <summary>
             Don't override target member's value when source value is null
             </summary>
             <param name="profileExpression"></param>
+        </member>
+        <member name="T:BenChainClient.Api.Config.DoNotMapNullOrDefaultValueAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.AppendixController.UploadFilesByPost">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BenChainClient.Api.Controllers.ContextController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ContextController.#ctor(BenChainClient.Api.Servicies.IContextService)">
+            <summary>
+            
+            </summary>
+            <param name="contextService"></param>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ContextController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ContextController.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ContextController.CreatedOrUpdate(BenChainClient.Api.Models.ContextModel)">
+            <summary>
+            
+            </summary>
+            <param name="contextModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ContextController.UpdateBenChainStatus(BenChainClient.Api.Models.BenChainContextModel)">
+            <summary>
+            
+            </summary>
+            <param name="benchainContextModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BenChainClient.Api.Controllers.ParticipantController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ParticipantController.#ctor(BenChainClient.Api.Servicies.IParticipantService)">
+            <summary>
+            
+            </summary>
+            <param name="participantService"></param>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ParticipantController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ParticipantController.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.ParticipantController.CreatedOrUpdate(BenChainClient.Api.Models.ParticipantModel)">
+            <summary>
+            
+            </summary>
+            <param name="participantModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.#ctor(BenChainClient.Api.Servicies.ISignatorServices)">
+            <summary>
+            
+            </summary>
+            <param name="signatorServices"></param>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.GetAllOpenByParticipant(System.Guid,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="participantId"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.CreatedOrUpdate(BenChainClient.Api.Models.SignatoryModel)">
+            <summary>
+            
+            </summary>
+            <param name="participantModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.BenChainUpdate(BenChainClient.Api.Models.SignatoryModel)">
+            <summary>
+            
+            </summary>
+            <param name="participantModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BenChainClient.Api.Helpers.FormatStrings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BenChainClient.Api.Helpers.FormatStrings.Tariff">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BenChainClient.Api.Helpers.FormatStrings.Currency">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BenChainClient.Api.Helpers.FormatStrings.DateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BenChainClient.Api.Helpers.Hash256Tool">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Helpers.Hash256Tool.Md5HashString(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Helpers.Hash256Tool.Sha256HashString(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Helpers.Hash256Tool.Sha256File(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputFilePath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BenChainClient.Api.Helpers.RegularExpressions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BenChainClient.Api.Helpers.RegularExpressions.IsNumericValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BenChainClient.Api.Helpers.RegularExpressions.IsNormalCosts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BenChainClient.Api.Helpers.RegularExpressions.IsDateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BenChainClient.Api.Helpers.RegularExpressions.IsWholeNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BenChainClient.Api.Models.BenChainContextModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.BenChainContextModel.ContextId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.BenChainContextModel.ContractId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.BenChainContextModel.ABI">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.BenChainContextModel.Bytescode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.BenChainContextModel.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BenChainClient.Api.Models.ContextModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Ref">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Created">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Modified">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.EffectiveEndDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Note">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.ExplanationNote">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Creator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Signator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Token1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.Token2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BenChainClient.Api.Servicies.ContextService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ContextService.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ContextService.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ContextService.CreateOrUpdate(BenChainClient.Api.Models.ContextModel)">
+            <summary>
+            
+            </summary>
+            <param name="contextModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ContextService.UpdateBenChainStatus(BenChainClient.Api.Models.BenChainContextModel)">
+            <summary>
+            
+            </summary>
+            <param name="benChainContextModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ContextService.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BenChainClient.Api.Servicies.IContextService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.IContextService.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.IContextService.CreateOrUpdate(BenChainClient.Api.Models.ContextModel)">
+            <summary>
+            
+            </summary>
+            <param name="contextModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.IContextService.UpdateBenChainStatus(BenChainClient.Api.Models.BenChainContextModel)">
+            <summary>
+            
+            </summary>
+            <param name="benChainContextModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BenChainClient.Api.Servicies.ParticipantService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ParticipantService.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ParticipantService.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ParticipantService.CreateOrUpdate(BenChainClient.Api.Models.ParticipantModel)">
+            <summary>
+            
+            </summary>
+            <param name="participantModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.ParticipantService.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BenChainClient.Api.Servicies.SignatorServices">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.SignatorServices.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.SignatorServices.GetAllByParticipant(System.Guid,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="participantId"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.SignatorServices.CreateOrUpdate(BenChainClient.Api.Models.SignatoryModel)">
+            <summary>
+            
+            </summary>
+            <param name="signatoryModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.SignatorServices.BenChainUpdate(BenChainClient.Api.Models.SignatoryModel)">
+            <summary>
+            
+            </summary>
+            <param name="signatoryModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.SignatorServices.Dispose">
+            <summary>
+            
+            </summary>
         </member>
     </members>
 </doc>

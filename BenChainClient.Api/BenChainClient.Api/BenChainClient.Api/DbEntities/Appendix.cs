@@ -18,7 +18,5 @@ namespace BenChainClient.Api.DbEntities
         public string FileName { get; set; }
         public string HashId { get; set; }
         public System.Guid ContextId { get; set; }
-    
-        public virtual Context Context { get; set; }
     }
 }

@@ -14,20 +14,11 @@ namespace BenChainClient.Api.DbEntities
     
     public partial class Participant
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Participant()
-        {
-            this.Signatory = new HashSet<Signatory>();
-        }
-    
         public System.Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string HashId { get; set; }
         public Nullable<int> SignatorLevel { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Signatory> Signatory { get; set; }
     }
 }

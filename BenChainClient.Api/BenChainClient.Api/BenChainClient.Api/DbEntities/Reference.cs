@@ -14,17 +14,8 @@ namespace BenChainClient.Api.DbEntities
     
     public partial class Reference
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Reference()
-        {
-            this.Context = new HashSet<Context>();
-        }
-    
         public System.Guid Id { get; set; }
         public string Name { get; set; }
         public string Note { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Context> Context { get; set; }
     }
 }

@@ -17,15 +17,12 @@ namespace BenChainClient.Api.DbEntities
         public System.Guid Id { get; set; }
         public System.Guid ContextId { get; set; }
         public System.Guid ParticipantId { get; set; }
+        public string BenChainContractId { get; set; }
         public int Status { get; set; }
         public System.DateTime Modified { get; set; }
         public int OrderId { get; set; }
         public string Note { get; set; }
-        public string ParentContractId { get; set; }
-        public string Hash1 { get; set; }
-        public string Hash2 { get; set; }
-    
-        public virtual Context Context { get; set; }
-        public virtual Participant Participant { get; set; }
+        public string BenChainABI { get; set; }
+        public string BenChainBytescode { get; set; }
     }
 }

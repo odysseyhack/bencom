@@ -20,6 +20,7 @@ namespace BenChainClient.Api
     {
       container.RegisterType<IParticipantService, ParticipantService>();
       container.RegisterType<IContextService, ContextService>();
+      container.RegisterType<ISignatorServices, SignatorServices>();
     }
   }
 }

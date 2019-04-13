@@ -10,5 +10,6 @@ namespace BenChainClient.Api.Servicies
   public interface IParticipantService : IDisposable
   {
     Task<ICollection<ParticipantModel>> GetAll();
+    Task<ParticipantModel> CreateOrUpdate(ParticipantModel participantModel);
   }
 }
