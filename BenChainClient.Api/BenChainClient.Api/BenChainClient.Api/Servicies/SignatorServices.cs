@@ -103,14 +103,10 @@ namespace BenChainClient.Api.Servicies
       if (signatoryModel.ContextId == Guid.Empty) return signatoryModel;
 
       var signatoryDb = await _signatorRepository.FindBy(s => s.ContextId == signatoryModel.ContextId).ConfigureAwait(false);
-
       if (signatoryDb == null) return signatoryModel;
-
       signatoryDb.BenChainContractId = signatoryModel.BenChainContractId;
       signatoryDb.BenChainABI = signatoryModel.BenChainABI;
       signatoryDb.BenChainBytescode = signatoryModel.BenChainBytescode;
-
-      
       _signatorRepository.Update(signatoryDb);
       _signatorRepository.Save(true, false, signatoryModel.Id);
 
