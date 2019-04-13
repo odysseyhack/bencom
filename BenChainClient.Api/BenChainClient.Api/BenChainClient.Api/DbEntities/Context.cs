@@ -26,5 +26,6 @@ namespace BenChainClient.Api.DbEntities
         public string Token1 { get; set; }
         public string Token2 { get; set; }
         public int Ref { get; set; }
+        public string Title { get; set; }
     }
 }

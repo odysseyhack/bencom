@@ -26,9 +26,9 @@ namespace BenChainClient.Api.DbEntities
         }
     
         public virtual DbSet<Appendix> Appendix { get; set; }
-        public virtual DbSet<Context> Context { get; set; }
         public virtual DbSet<Participant> Participant { get; set; }
         public virtual DbSet<Reference> Reference { get; set; }
         public virtual DbSet<Signatory> Signatory { get; set; }
+        public virtual DbSet<Context> Context { get; set; }
     }
 }

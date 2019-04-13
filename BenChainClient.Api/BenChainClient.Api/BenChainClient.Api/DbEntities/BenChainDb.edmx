@@ -30,6 +30,7 @@
           <Property Name="Token1" Type="nvarchar" MaxLength="550" Nullable="false" />
           <Property Name="Token2" Type="nvarchar" MaxLength="550" Nullable="false" />
           <Property Name="Ref" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="550" />
         </EntityType>
         <EntityType Name="Participant">
           <Key>
@@ -78,10 +79,10 @@
       <Schema Namespace="odysseyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="odysseyEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Appendix" EntityType="odysseyModel.Appendix" />
-          <EntitySet Name="Context" EntityType="odysseyModel.Context" />
           <EntitySet Name="Participant" EntityType="odysseyModel.Participant" />
           <EntitySet Name="Reference" EntityType="odysseyModel.Reference" />
           <EntitySet Name="Signatory" EntityType="odysseyModel.Signatory" />
+          <EntitySet Name="Context" EntityType="odysseyModel.Context" />
         </EntityContainer>
         <EntityType Name="Appendix">
           <Key>
@@ -91,23 +92,6 @@
           <Property Name="FileName" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
           <Property Name="HashId" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
           <Property Name="ContextId" Type="Guid" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Context">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EffectiveEndDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="Note" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ExplanationNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Creator" Type="Guid" />
-          <Property Name="Signator" Type="Guid" />
-          <Property Name="Token1" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
-          <Property Name="Token2" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
-          <Property Name="Ref" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Participant">
           <Key>
@@ -143,6 +127,24 @@
           <Property Name="BenChainABI" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BenChainBytescode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Context">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EffectiveEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExplanationNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Creator" Type="Guid" />
+          <Property Name="Signator" Type="Guid" />
+          <Property Name="Token1" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Token2" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Ref" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -155,24 +157,6 @@
                 <ScalarProperty Name="ContextId" ColumnName="ContextId" />
                 <ScalarProperty Name="HashId" ColumnName="HashId" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Context">
-            <EntityTypeMapping TypeName="odysseyModel.Context">
-              <MappingFragment StoreEntitySet="Context">
-                <ScalarProperty Name="Ref" ColumnName="Ref" />
-                <ScalarProperty Name="Token2" ColumnName="Token2" />
-                <ScalarProperty Name="Token1" ColumnName="Token1" />
-                <ScalarProperty Name="Signator" ColumnName="Signator" />
-                <ScalarProperty Name="Creator" ColumnName="Creator" />
-                <ScalarProperty Name="ExplanationNote" ColumnName="ExplanationNote" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="EffectiveEndDate" ColumnName="EffectiveEndDate" />
-                <ScalarProperty Name="Modified" ColumnName="Modified" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -210,6 +194,25 @@
                 <ScalarProperty Name="BenChainContractId" ColumnName="BenChainContractId" />
                 <ScalarProperty Name="ParticipantId" ColumnName="ParticipantId" />
                 <ScalarProperty Name="ContextId" ColumnName="ContextId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Context">
+            <EntityTypeMapping TypeName="odysseyModel.Context">
+              <MappingFragment StoreEntitySet="Context">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+                <ScalarProperty Name="Token2" ColumnName="Token2" />
+                <ScalarProperty Name="Token1" ColumnName="Token1" />
+                <ScalarProperty Name="Signator" ColumnName="Signator" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="ExplanationNote" ColumnName="ExplanationNote" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EffectiveEndDate" ColumnName="EffectiveEndDate" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
