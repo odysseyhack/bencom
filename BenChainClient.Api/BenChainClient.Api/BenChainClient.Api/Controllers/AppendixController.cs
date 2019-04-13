@@ -44,6 +44,7 @@ namespace BenChainClient.Api.Controllers
     public async Task<IHttpActionResult> UploadFilesByPost()
     {
       var httpContext = HttpContext.Current;
+      var CheckSum = "00000000000-00000000000";
       if (httpContext.Request.Files.Count > 0)
       {
         for (int i = 0; i < httpContext.Request.Files.Count; i++)
@@ -55,13 +56,13 @@ namespace BenChainClient.Api.Controllers
               Path.Combine(HostingEnvironment.MapPath(ConfigurationManager.AppSettings["fileUploadFolder"]),
                 httpPostedFile.FileName);
 
-            var CheckSum = Helpers.Hash256Tool.Sha256File(fileSavePath);
+             CheckSum = Helpers.Hash256Tool.Sha256File(fileSavePath);
 
             httpPostedFile.SaveAs(fileSavePath);
           }
         }
 
-        return Ok();
+        return Ok(CheckSum);
       }
 
       return NotFound();

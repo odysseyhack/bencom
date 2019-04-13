@@ -31,10 +31,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2019 22:43:52</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.dll">
-      <publishTime>04/13/2019 23:38:11</publishTime>
+      <publishTime>04/13/2019 23:50:14</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.pdb">
-      <publishTime>04/13/2019 23:38:11</publishTime>
+      <publishTime>04/13/2019 23:50:14</publishTime>
     </File>
     <File Include="bin/CommonServiceLocator.dll">
       <publishTime>03/03/2018 12:12:52</publishTime>
@@ -307,7 +307,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/12/2019 16:56:18</publishTime>
     </File>
     <File Include="DbEntities/BenChainDb.edmx.diagram">
-      <publishTime>04/13/2019 16:24:41</publishTime>
+      <publishTime>04/13/2019 23:48:26</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>04/12/2019 16:56:17</publishTime>
