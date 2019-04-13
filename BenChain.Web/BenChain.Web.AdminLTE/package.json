@@ -1,33 +1,32 @@
 {
-  "name": "blockchaingers",
+  "name": "odessey",
   "version": "1.0.0",
-  "description": "Blockchaingers hackathon",
+  "description": "Odessey hackathon",
   "main": "gulpfile.js",
   "dependencies": {
+    "admin-lte": "^2.4.10",
     "bootstrap-sass": "^3.3.7",
     "hover.css": "^2.3.0",
     "jquery": "^3.3.1"
   },
   "devDependencies": {
+    "browser-sync": "^2.26.3",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
     "gulp-cssnano": "^2.1.3",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.2.1",
-    "gulp-webserver": "^0.9.1",
-    "run-sequence": "^2.2.1"
+    "gulp-sass": "^3.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhardenberg/blockchaingers-hackathon.git"
+    "url": "git+https://github.com/mhardenberg/odessey-hackathon.git"
   },
   "author": "Martijn Hardenberg",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mhardenberg/blockchaingers-hackathon/issues"
+    "url": "https://github.com/mhardenberg/odessey-hackathon/issues"
   },
-  "homepage": "https://github.com/mhardenberg/blockchaingers-hackathon#readme"
+  "homepage": "https://github.com/mhardenberg/odessey-hackathon#readme"
 }

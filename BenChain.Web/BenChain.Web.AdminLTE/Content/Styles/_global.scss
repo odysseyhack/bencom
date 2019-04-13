@@ -1,0 +1,277 @@
+.bg {
+  &-aqua {
+    background: #6d7993!important;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+  }
+  &-green {
+    background: #6d9370!important;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+  }
+  &-yellow {
+    background: #938f6d!important;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+  }
+  &-red {
+    background: #9e7782!important;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+  }
+}
+.label {
+  display: inline-block;
+  font-weight: 600;
+  font-size: $font-size-large;
+  line-height: 40px;
+  padding: 0 $grid-gutter-width/1.5;
+  border: 0;
+  background: none;
+  &-pending {
+    color: #938f6d;
+  }
+  &-approved {
+    color: #6d9370;
+  }
+  &-declined {
+    color: #9e7782;
+  }
+}
+.table {
+  .label {
+    line-height: 24px;
+  }
+}
+.btn {
+  border: 0;
+  line-height: 40px;
+  height: 40px;
+  font-weight: 600;
+  overflow: hidden;
+  padding: 0 $grid-gutter-width/1.5;
+  @include border-radius(20px);
+  &-primary {
+    background: #6d7993!important;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+    &:before {
+      background: darken(#6d7993,20%)!important;
+    }
+  }
+  &-success {
+    background: #6d9370!important;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+    &:before {
+      background: darken(#6d9370,20%)!important;
+    }
+  }
+  &-warning {
+    background: #938f6d!important;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+    &:before {
+      background: darken(#938f6d,20%)!important;
+    }
+  }
+  &-danger {
+    background: #9e7782!important;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+    &:before {
+      background: darken(#9e7782,20%)!important;
+    }
+  }
+  &-info {
+    &:before {
+      background: darken($brand-info,20%)!important;
+    }
+  }
+  &-link {
+
+  }
+  &-digid {
+    margin: 0!important;
+    @include border-radius(0);
+    img {
+      float: left;
+      height: 40px;
+      margin-left: -$grid-gutter-width/1.5;
+      margin-right: $grid-gutter-width/3;
+    }
+  }
+  &-save {
+    display: inline-block;
+    width: 150px;
+    height: 86px;
+    font-size: 32px;
+    color: #fff;
+    background: #ff3b3f!important;
+    margin: $grid-gutter-width auto;
+    @include border-radius(43px);
+    &:before {
+      background: darken(#ff3b3f,20%)!important;
+    }
+    @media screen and (min-width: $screen-md-min) {
+      margin: $grid-gutter-width*2 auto;
+    }
+  }
+}
+.small-box {
+  height: 86px;
+  overflow: hidden;
+  @include border-radius(43px);
+  h3 {
+    margin: 0;
+  }
+  .icon, &:hover .icon {
+    font-size: 100px;
+  }
+  @media screen and (min-width: $screen-sm-min) {
+    .inner {
+      padding-left: $grid-gutter-width;
+      padding-right: $grid-gutter-width;
+    }
+  }
+}
+.box.box-primary {
+  background: #fff;
+  border-color: #ff3b3f!important;
+  margin-bottom: $grid-gutter-width;
+  @include border-radius(10px);
+  @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+  .box-header {
+    padding: $grid-gutter-width/1.7 $grid-gutter-width/2;
+    @media screen and (min-width: $screen-sm-min) {
+      padding: $grid-gutter-width;
+    }
+    .box-title {
+      font-size: $font-size-h3;
+      color: $gray-base;
+    }
+    .badge {
+      font-size: $font-size-large;
+      background: #ff3b3f;
+      @include border-radius(100%);
+    }
+  }
+  .box-body {
+    padding: 0 0 $grid-gutter-width/2;
+    &-details {
+      padding: $grid-gutter-width/2;
+      @media screen and (min-width: $screen-sm-min) {
+        padding: $grid-gutter-width;
+      }
+    }
+    .panel {
+      border: 0;
+      margin: 0;
+      @include box-shadow(none);
+      .panel-title {
+        display: block;
+        color: $text-color;
+        text-decoration: none;
+        padding: $grid-gutter-width/3 $grid-gutter-width/2;
+        @include transition(all 0.2s ease-in-out);
+        @include clearfix();
+        &:hover, &:active {
+          background: #caebf2;
+        }
+        @media screen and (min-width: $screen-sm-min) {
+          padding: $grid-gutter-width/3 $grid-gutter-width;
+        }
+        .status {
+          display: block;
+          font-weight: 600;
+          text-align: right;
+          &-toggle {
+            color: $link-color;
+          }
+          &-pending {
+            color: #938f6d;
+          }
+          &-approved {
+            color: #6d9370;
+          }
+          &-declined {
+            color: #9e7782;
+          }
+        }
+        .enddate {
+          display: block;
+          font-weight: normal;
+          color: $gray-light;
+          text-align: right;
+        }
+        .icon {
+          float: left;
+          width: 50px;
+          height: 50px;
+          font-size: $font-size-h4;
+          line-height: 50px;
+          text-align: center;
+          background: $gray-lighter;
+          margin-right: $grid-gutter-width/3;
+          @include border-radius(25px);
+        }
+        .title {
+          display: block;
+          @include text-overflow();
+        }
+        .participant {
+          display: block;
+          color: $gray-light;
+          @include text-overflow();
+        }
+      }
+      .panel-collapse {
+        padding: $grid-gutter-width/3 $grid-gutter-width/2;
+        border-bottom: 1px solid $gray-lighter;
+        @include clearfix();
+        @media screen and (min-width: $screen-sm-min) {
+          padding: $grid-gutter-width/3 $grid-gutter-width;
+        }
+        p, img {
+          max-width: 100%;
+          display: block;
+          margin-bottom: $grid-gutter-width/2;
+        }
+        .alert {
+          background: $gray-lighter;
+          margin-bottom: $grid-gutter-width/2;
+          ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            i {
+              margin-right: $grid-gutter-width/6;
+              &.advantage {
+                color: #6d9370;
+              }
+              &.disadvantage {
+
+              }
+            }
+          }
+        }
+        .btn {
+          margin-bottom: $grid-gutter-width/2;
+        }
+      }
+    }
+  }
+}
+.content-wrapper {
+  background: none;
+  .content-header {
+    padding: $grid-gutter-width 0 $grid-gutter-width/3 0;
+    h1 {
+      font-weight: bold;
+      font-size: $font-size-h1;
+      margin: 0 0 $grid-gutter-width/2;
+    }
+    @media screen and (min-width: $screen-sm-min) {
+      .btn-add-request {
+        float: right;
+      }
+    }
+  }
+  .content {
+    padding-left: 0;
+    padding-right: 0;
+    min-height: auto;
+  }
+}

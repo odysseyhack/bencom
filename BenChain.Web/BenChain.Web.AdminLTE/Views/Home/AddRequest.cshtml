@@ -1,0 +1,61 @@
+﻿@model BenChain.Web.AdminLTE.ViewModels.Home.AddRequestViewModel
+<div class="container">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Add <small>request</small></h1>
+      </div>
+    </div>
+  </section>
+  <section class="content">
+    <div class="box box-primary">
+      <div class="box-body box-body-details">
+        <div class="row">
+          <div class="col-md-7">
+            <p class="lead">Enter the details</p>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Title:</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" placeholder="Title of request">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Type:</label>
+                <div class="col-sm-9">
+                  <select class="form-control">
+                    <option>Financial insight</option>
+                    <option>Permit</option>
+                    <option>Share photo</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Participant:</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" placeholder="Name of participant">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">End date:</label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" placeholder="End date of permission">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Message:</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" rows="3" placeholder="Write your message"></textarea>
+                  <button class="btn btn-link">Or upload a file</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-5 text-center">
+            <button class="btn btn-save hvr-bounce-to-right">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

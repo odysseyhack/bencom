@@ -2,42 +2,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@Model.Title - Benchain Web</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>@Model.Title</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   @Styles.Render("~/Content/css")
   @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        @Html.ActionLink("BenChain.Web", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li>@Html.ActionLink("Home", "Index", "Home")</li>
-          <li>@Html.ActionLink("About", "About", "Home")</li>
-          <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        </ul>
-      </div>
+<body class="hold-transition layout-top-nav">
+  <div class="wrapper">
+    <header class="main-header">
+      <nav class="navbar navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a href="/" class="navbar-brand">Benchain</a>
+          </div>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="~/Content/Images/photo-person.jpg" class="user-image" alt="User Image">
+                  <span class="hidden-xs">Name of user</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="user-header">
+                    <img src="assets/img/photo-person.jpg" class="img-circle" alt="User Image">
+                    <p>Name of user</p>
+                  </li>
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="portal.html" class="btn btn-link">Portal</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="#" class="btn btn-link">Sign out</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="content-wrapper">
+      @RenderBody()
     </div>
   </div>
-  <div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-      <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
-  </div>
-
   @Scripts.Render("~/bundles/jquery")
   @Scripts.Render("~/bundles/bootstrap")
+  @Scripts.Render("~/bundles/adminlte")
+
   @RenderSection("scripts", required: false)
 </body>
 </html>

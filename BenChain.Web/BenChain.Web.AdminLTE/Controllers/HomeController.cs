@@ -14,16 +14,16 @@ namespace BenChain.Web.AdminLTE.Controllers {
       return View(new HomeViewModel());
     }
 
-    public ActionResult About() {
-      ViewBag.Message = "Your application description page.";
-
-      return View();
+    [HttpGet]
+    [Route("add-request")]
+    public ActionResult AddRequest() {
+      return View(new AddRequestViewModel());
     }
 
-    public ActionResult Contact() {
-      ViewBag.Message = "Your contact page.";
-
-      return View();
+    [HttpGet]
+    [Route("permission-detail")]
+    public ActionResult PermissionDetail() {
+      return View(new PermissionDetailViewModel());
     }
   }
 }

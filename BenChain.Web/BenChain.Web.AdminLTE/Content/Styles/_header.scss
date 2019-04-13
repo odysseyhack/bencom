@@ -1,0 +1,39 @@
+.navbar {
+  background: #fff;
+  border: 0;
+  @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+  &-header {
+    float: left;
+    .navbar-brand {
+      color: $text-color;
+      &:hover, &:focus {
+        color: #fff!important;
+        background: #ff3b3f!important;
+      }
+    }
+  }
+  &-custom-menu {
+    float: right;
+    a {
+      color: $text-color;
+      &:hover, &:focus {
+        color: #fff!important;
+        background: #ff3b3f!important;
+      }
+    }
+    .dropdown-menu {
+      background: #ff3b3f!important;
+      border: 0!important;
+      .user-header img {
+        width: 117px!important;
+        height: 117px!important;
+      }
+      .user-footer {
+        background: #ff3b3f!important;
+        a {
+          color: #fff!important;
+        }
+      }
+    }
+  }
+}
