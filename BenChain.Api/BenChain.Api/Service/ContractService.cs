@@ -37,7 +37,7 @@ namespace BenChain.Api.Service
       _account = wallet.GetAccount(0);
 
       _contractRepository = new ContractRepository(_account, blockChainUrl);
-      
+
 
       //var x = BenChainClientApi.Client.Participant.GetAllWithHttpMessagesAsync();
 
@@ -55,9 +55,11 @@ namespace BenChain.Api.Service
 
       var web3 = new Web3(_account, _blockChainUrl);
 
-      var deployment = CreateGenericContract(new Guid("TestGuid"));
+      var deployment = CreateGenericContract(Guid.NewGuid());
+      deployment.Gas = DefaultGasAmount;
+
       var service = await GenericContractService.DeployContractAndGetServiceAsync(web3, deployment);
-      var apporveFunction = await service.ApproveRequestAndWaitForReceiptAsync(
+      var approveFunction = await service.ApproveRequestAndWaitForReceiptAsync(
         new ApproveFunction
         {
           AmountToSend = amountToSend, // One ether
@@ -67,12 +69,12 @@ namespace BenChain.Api.Service
 
 
       var contractId = Guid.NewGuid();
-      var abi =  _contractRepository.GetAbi();
+      var abi = _contractRepository.GetAbi();
       var bin = _contractRepository.GetBin();
 
       var responseModel = new ResponseModel(contractBindingModel.ContextId, contractId.ToString(), bin, abi);
 
-      _ =  BenChainClientApi.Client.Context.UpdateBenChainStatusWithHttpMessagesAsync(new BenChainClient.Api.Models.BenChainContextModel
+      _ = BenChainClientApi.Client.Context.UpdateBenChainStatusWithHttpMessagesAsync(new BenChainClient.Api.Models.BenChainContextModel
       {
         ABI = abi,
         Bytescode = bin,
@@ -83,7 +85,22 @@ namespace BenChain.Api.Service
       return responseModel;
     }
 
-   
+
+    public void ApproveContract(Guid contractId, string contractAddress)
+    {
+      var web3 = new Web3(_account, _blockChainUrl);
+
+      var approve = new ApproveFunction()
+      {
+        FromAddress = _account.Address,
+        Gas = DefaultGasAmount
+      };
+
+      var service = new GenericContractService(web3, contractAddress);
+      _ = service.ApproveRequestAsync(approve);
+    }
+
+
 
     /// <summary>
     /// Create contract

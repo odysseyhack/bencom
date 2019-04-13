@@ -30,7 +30,7 @@ namespace BenChain.Api.Controllers
     /// <param name="token1"></param>
     /// <param name="token2"></param>
     /// <returns></returns>
-    [Route("contract"), HttpPost, ResponseType(typeof(ResponseModel))]
+    [Route("contract"), HttpGet]
     [SwaggerResponse(HttpStatusCode.NotFound, Description = "No Values")]
     public async Task<IHttpActionResult> AddContract(Guid contextId, string token1, string token2)
     {
@@ -38,22 +38,5 @@ namespace BenChain.Api.Controllers
 
       return Ok(response);
     }
-
-    
-
-    [SwaggerResponse(HttpStatusCode.NotFound, Description = "Add Contact failed")]
-    public async Task<IHttpActionResult> AddEnergyContract([FromBody] ContractBindingModel contractBindingModel)
-    {
-      var contract = await _service.AddContract(contractBindingModel);
-      var contractid = contract.ContractId;
-      if (contractid == null)
-      {
-        return NotFound();
-      }
-
-      return Ok(contractid);
-    }
-
-
   }
 }
