@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenChainClient.Api", "BenCh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenChain.Api", "BenChain.Api\BenChain.Api.csproj", "{8F5F5773-E4D1-4D62-8F7D-297163B37F23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenChainClient.Api.Tests", "BenChainClient.Api.Tests\BenChainClient.Api.Tests.csproj", "{B3CB1E5D-A8C1-471D-948D-31974A724CA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8F5F5773-E4D1-4D62-8F7D-297163B37F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F5F5773-E4D1-4D62-8F7D-297163B37F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F5F5773-E4D1-4D62-8F7D-297163B37F23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3CB1E5D-A8C1-471D-948D-31974A724CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3CB1E5D-A8C1-471D-948D-31974A724CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3CB1E5D-A8C1-471D-948D-31974A724CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3CB1E5D-A8C1-471D-948D-31974A724CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
