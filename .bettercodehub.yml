@@ -11,3 +11,6 @@ exclude:
 #Generated swagger clients
 - /BenChainClient.Api/BenChainClient.Api/BenChain.Api/.*
 - /BenChain.Api/BenChainClient.Api/.*
+#Laravel default login translation
+- /BenChain.CommunityPoc.Web/resources/lang/.*
+- /BenChain.CommunityPoc.Web/resources/js/bootstrap.js
