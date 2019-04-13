@@ -56,11 +56,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppendixControllerTest.cs" />
+    <Compile Include="BenChainPortfolioAutoMapperConfigTest.cs" />
     <Compile Include="ContextControllerTest.cs" />
+    <Compile Include="ContextServiceTest.cs" />
+    <Compile Include="Hash256ToolTest.cs" />
     <Compile Include="ParticipantControllerTest.cs" />
+    <Compile Include="ParticipantServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\PexAssemblyInfo.cs" />
+    <Compile Include="RepositoryTTest.cs" />
     <Compile Include="SignatorControllerTest.cs" />
+    <Compile Include="SignatorServicesTest.cs" />
+    <Compile Include="SwaggerConfigTest.cs" />
+    <Compile Include="UnityConfigTest.cs" />
+    <Compile Include="WebApiConfigTest.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">

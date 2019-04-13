@@ -312,21 +312,21 @@
             </summary>
         </member>
         <member name="M:BenChainClient.Api.Servicies.ContextService.GetAll">
+            <inheritdoc />
             <summary>
-            
             </summary>
             <returns></returns>
         </member>
         <member name="M:BenChainClient.Api.Servicies.ContextService.CreateOrUpdate(BenChainClient.Api.Models.ContextModel)">
+            <inheritdoc />
             <summary>
-            
             </summary>
             <param name="contextModel"></param>
             <returns></returns>
         </member>
         <member name="M:BenChainClient.Api.Servicies.ContextService.UpdateBenChainStatus(BenChainClient.Api.Models.BenChainContextModel)">
+            <inheritdoc />
             <summary>
-            
             </summary>
             <param name="benChainContextModel"></param>
             <returns></returns>
@@ -399,6 +399,12 @@
             
             </summary>
         </member>
+        <member name="M:BenChainClient.Api.Servicies.SignatorServices.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:BenChainClient.Api.Servicies.SignatorServices.GetAllByParticipant(System.Guid,System.Int32)">
             <summary>
             
@@ -422,8 +428,8 @@
             <returns></returns>
         </member>
         <member name="M:BenChainClient.Api.Servicies.SignatorServices.Dispose">
+            <inheritdoc />
             <summary>
-            
             </summary>
         </member>
     </members>
