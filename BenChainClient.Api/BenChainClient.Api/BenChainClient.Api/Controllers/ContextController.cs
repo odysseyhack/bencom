@@ -55,7 +55,7 @@ namespace BenChainClient.Api.Controllers
     /// <param name="participant"></param>
     /// <returns></returns>
     [Route("participant"), HttpGet, ResponseType(typeof(IEnumerable<ContextModel>))]
-    public async Task<IHttpActionResult> GetAll(Guid participant)
+    public async Task<IHttpActionResult> GetAllByParticipant(Guid participant)
     {
       var contexts = await _contextService.GetAllByParticipant(participant);
       return Ok(contexts);
