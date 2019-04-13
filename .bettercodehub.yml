@@ -15,3 +15,5 @@ exclude:
 #Laravel default login translation
 - /BenChain.CommunityPoc.Web/resources/lang/.*
 - /BenChain.CommunityPoc.Web/resources/js/bootstrap.js
+#Minified and compiled
+- /BenChain.CommunityPoc.Web/public/.*
