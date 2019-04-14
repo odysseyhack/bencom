@@ -161,6 +161,8 @@ namespace BenChain.Api
         /// </param>
         /// <param name='fileChecksum'>
         /// </param>
+        /// <param name='contextHash'>
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -170,7 +172,7 @@ namespace BenChain.Api
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, string fileChecksum, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, string fileChecksum, string contextHash, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (token1 == null)
             {
@@ -184,6 +186,10 @@ namespace BenChain.Api
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "fileChecksum");
             }
+            if (contextHash == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "contextHash");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -195,6 +201,7 @@ namespace BenChain.Api
                 tracingParameters.Add("token1", token1);
                 tracingParameters.Add("token2", token2);
                 tracingParameters.Add("fileChecksum", fileChecksum);
+                tracingParameters.Add("contextHash", contextHash);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "AddContract", tracingParameters);
             }
@@ -214,6 +221,10 @@ namespace BenChain.Api
             if (fileChecksum != null)
             {
                 _queryParameters.Add(string.Format("fileChecksum={0}", Uri.EscapeDataString(fileChecksum)));
+            }
+            if (contextHash != null)
+            {
+                _queryParameters.Add(string.Format("contextHash={0}", Uri.EscapeDataString(contextHash)));
             }
             if (_queryParameters.Count > 0)
             {

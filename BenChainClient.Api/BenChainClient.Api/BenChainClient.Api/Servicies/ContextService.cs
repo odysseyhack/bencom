@@ -75,6 +75,7 @@ namespace BenChainClient.Api.Servicies
         Helpers.Hash256Tool.Sha256HashString(contextModel.Id + contextModel.Creator.ToString() + "1");
       contextModel.Token2 =
         Helpers.Hash256Tool.Sha256HashString(contextModel.Id + contextModel.Creator.ToString() + "2");
+      contextModel.ContextHash = Helpers.Hash256Tool.Sha256HashString(contextModel.Note + contextModel.ExplanationNote + contextModel.Id.ToString());
       contextModel.Created = DateTime.Now;
       contextModel.Modified = DateTime.Now;
 
@@ -108,7 +109,7 @@ namespace BenChainClient.Api.Servicies
         _contextRepository.Save(false, false, contextModel.Id);
       }
 
-      var contract = await BenChainApi.Client.Contract.AddContractWithHttpMessagesAsync(contextModel.Id, contextModel.Token1, contextModel.Token2, contextModel.FileCheckSum).ConfigureAwait(false);
+      var contract = await BenChainApi.Client.Contract.AddContractWithHttpMessagesAsync(contextModel.Id, contextModel.Token1, contextModel.Token2, contextModel.FileCheckSum, contextModel.ContextHash).ConfigureAwait(false);
 
 
       //First Signator

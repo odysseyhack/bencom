@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/ApiDoc.xml">
-      <publishTime>04/14/2019 02:23:32</publishTime>
+      <publishTime>04/14/2019 03:01:28</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>04/12/2019 16:56:17</publishTime>
@@ -25,16 +25,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/17/2018 10:14:56</publishTime>
     </File>
     <File Include="bin/BenChain.Api.dll">
-      <publishTime>04/14/2019 02:25:09</publishTime>
+      <publishTime>04/14/2019 03:17:32</publishTime>
     </File>
     <File Include="bin/BenChain.Api.pdb">
-      <publishTime>04/14/2019 02:25:09</publishTime>
+      <publishTime>04/14/2019 03:17:32</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.dll">
-      <publishTime>04/14/2019 02:25:09</publishTime>
+      <publishTime>04/14/2019 03:17:42</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.pdb">
-      <publishTime>04/14/2019 02:25:09</publishTime>
+      <publishTime>04/14/2019 03:17:42</publishTime>
     </File>
     <File Include="bin/CommonServiceLocator.dll">
       <publishTime>03/03/2018 12:12:52</publishTime>
@@ -307,7 +307,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/12/2019 16:56:18</publishTime>
     </File>
     <File Include="DbEntities/BenChainDb.edmx.diagram">
-      <publishTime>04/13/2019 23:48:26</publishTime>
+      <publishTime>04/14/2019 02:41:33</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>04/12/2019 16:56:17</publishTime>

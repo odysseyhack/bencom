@@ -31,12 +31,14 @@ namespace BenChain.Api
         /// </param>
         /// <param name='fileChecksum'>
         /// </param>
+        /// <param name='contextHash'>
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, string fileChecksum, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, string fileChecksum, string contextHash, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

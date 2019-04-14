@@ -48,10 +48,18 @@ namespace BenChainClient.Api.Models
     /// 
     /// </summary>
     public string ExplanationNote { get; set; }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public string ContextHash { get; set; }
     /// <summary>
     /// 
     /// </summary>
     public Guid Creator { get; set; }
+    /// <summary>
+    /// 
+    /// </summary>
     public string CreatorName { get; set; }
     /// <summary>
     /// 

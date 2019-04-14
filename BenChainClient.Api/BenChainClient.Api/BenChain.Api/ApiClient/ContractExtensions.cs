@@ -49,9 +49,11 @@ namespace BenChain.Api
             /// </param>
             /// <param name='fileChecksum'>
             /// </param>
-            public static object AddContract(this IContract operations, Guid contextId, string token1, string token2, string fileChecksum)
+            /// <param name='contextHash'>
+            /// </param>
+            public static object AddContract(this IContract operations, Guid contextId, string token1, string token2, string fileChecksum, string contextHash)
             {
-                return Task.Factory.StartNew(s => ((IContract)s).AddContractAsync(contextId, token1, token2, fileChecksum), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IContract)s).AddContractAsync(contextId, token1, token2, fileChecksum, contextHash), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -65,12 +67,14 @@ namespace BenChain.Api
             /// </param>
             /// <param name='fileChecksum'>
             /// </param>
+            /// <param name='contextHash'>
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> AddContractAsync(this IContract operations, Guid contextId, string token1, string token2, string fileChecksum, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> AddContractAsync(this IContract operations, Guid contextId, string token1, string token2, string fileChecksum, string contextHash, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.AddContractWithHttpMessagesAsync(contextId, token1, token2, fileChecksum, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.AddContractWithHttpMessagesAsync(contextId, token1, token2, fileChecksum, contextHash, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
