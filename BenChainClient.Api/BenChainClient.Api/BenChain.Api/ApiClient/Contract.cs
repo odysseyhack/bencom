@@ -153,14 +153,13 @@ namespace BenChain.Api
             return _result;
         }
 
-        /// <summary>
-        /// Add a contract to the blockchain
-        /// </summary>
         /// <param name='contextId'>
         /// </param>
         /// <param name='token1'>
         /// </param>
         /// <param name='token2'>
+        /// </param>
+        /// <param name='fileChecksum'>
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -171,7 +170,7 @@ namespace BenChain.Api
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, string fileChecksum, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (token1 == null)
             {
@@ -180,6 +179,10 @@ namespace BenChain.Api
             if (token2 == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "token2");
+            }
+            if (fileChecksum == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "fileChecksum");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -191,6 +194,7 @@ namespace BenChain.Api
                 tracingParameters.Add("contextId", contextId);
                 tracingParameters.Add("token1", token1);
                 tracingParameters.Add("token2", token2);
+                tracingParameters.Add("fileChecksum", fileChecksum);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "AddContract", tracingParameters);
             }
@@ -206,6 +210,10 @@ namespace BenChain.Api
             if (token2 != null)
             {
                 _queryParameters.Add(string.Format("token2={0}", Uri.EscapeDataString(token2)));
+            }
+            if (fileChecksum != null)
+            {
+                _queryParameters.Add(string.Format("fileChecksum={0}", Uri.EscapeDataString(fileChecksum)));
             }
             if (_queryParameters.Count > 0)
             {

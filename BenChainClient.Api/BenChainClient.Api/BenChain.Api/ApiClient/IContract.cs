@@ -23,14 +23,13 @@ namespace BenChain.Api
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<string>> GetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Add a contract to the blockchain
-        /// </summary>
         /// <param name='contextId'>
         /// </param>
         /// <param name='token1'>
         /// </param>
         /// <param name='token2'>
+        /// </param>
+        /// <param name='fileChecksum'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -38,6 +37,6 @@ namespace BenChain.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> AddContractWithHttpMessagesAsync(Guid contextId, string token1, string token2, string fileChecksum, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

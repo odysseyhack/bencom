@@ -38,9 +38,6 @@ namespace BenChain.Api
                 }
             }
 
-            /// <summary>
-            /// Add a contract to the blockchain
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -50,14 +47,13 @@ namespace BenChain.Api
             /// </param>
             /// <param name='token2'>
             /// </param>
-            public static object AddContract(this IContract operations, Guid contextId, string token1, string token2)
+            /// <param name='fileChecksum'>
+            /// </param>
+            public static object AddContract(this IContract operations, Guid contextId, string token1, string token2, string fileChecksum)
             {
-                return Task.Factory.StartNew(s => ((IContract)s).AddContractAsync(contextId, token1, token2), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IContract)s).AddContractAsync(contextId, token1, token2, fileChecksum), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Add a contract to the blockchain
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -66,13 +62,15 @@ namespace BenChain.Api
             /// <param name='token1'>
             /// </param>
             /// <param name='token2'>
+            /// </param>
+            /// <param name='fileChecksum'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> AddContractAsync(this IContract operations, Guid contextId, string token1, string token2, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> AddContractAsync(this IContract operations, Guid contextId, string token1, string token2, string fileChecksum, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.AddContractWithHttpMessagesAsync(contextId, token1, token2, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.AddContractWithHttpMessagesAsync(contextId, token1, token2, fileChecksum, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

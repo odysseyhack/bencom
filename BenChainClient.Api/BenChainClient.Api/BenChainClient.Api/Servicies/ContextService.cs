@@ -108,7 +108,7 @@ namespace BenChainClient.Api.Servicies
         _contextRepository.Save(false, false, contextModel.Id);
       }
 
-      var contract = await BenChainApi.Client.Contract.AddContractWithHttpMessagesAsync(contextModel.Id, contextModel.Token1, contextModel.Token2).ConfigureAwait(false);
+      var contract = await BenChainApi.Client.Contract.AddContractWithHttpMessagesAsync(contextModel.Id, contextModel.Token1, contextModel.Token2, contextModel.FileCheckSum).ConfigureAwait(false);
 
 
       //First Signator
