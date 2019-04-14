@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BenChainClientApiTest.cs" />
+    <Compile Include="ContractControllerTest.cs" />
     <Compile Include="ContractRepositoryTest.cs" />
     <Compile Include="GenericContractServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
