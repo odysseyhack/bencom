@@ -9,6 +9,7 @@ using BenChain.Api.Models;
 using BenChain.Api.Repository;
 using BenChainClient.Api.Models;
 using Multiformats.Hash;
+using Multiformats.Hash.Algorithms;
 using Nethereum.HdWallet;
 using Nethereum.Hex.HexTypes;
 using Nethereum.RPC.Accounts;
@@ -57,14 +58,21 @@ namespace BenChain.Api.Service
     public async Task<ResponseModel> AddContract(ContractBindingModel contractBindingModel)
     {
       var amountToSend = new HexBigInteger(1000000000000000000);
-      //var keccak =  Multihash.Kecc
+      var keccak = Multihash.Encode( contractBindingModel.Token1 + contractBindingModel.Token2, HashType.KECCAK_256);
 
       var web3 = new Web3(_account, _blockChainUrl);
 
       var deployment = CreateGenericContract(Guid.NewGuid());
       deployment.Gas = DefaultGasAmount;
-
+      
       var service = await GenericContractService.DeployContractAndGetServiceAsync(web3, deployment);
+      var addAttachment = await service.AddAttachmentHashRequestAndWaitForReceiptAsync(new AddAttachmentHashFunction
+      {
+        FromAddress = _account.Address,
+        Hash = contractBindingModel.FileChecksum,
+        Gas = DefaultGasAmount
+      });
+
       //var approveFunction = await service.ApproveRequestAndWaitForReceiptAsync(
       //  new ApproveFunction
       //  {

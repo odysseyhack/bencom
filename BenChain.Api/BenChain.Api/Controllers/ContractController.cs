@@ -29,12 +29,13 @@ namespace BenChain.Api.Controllers
     /// <param name="contextId"></param>
     /// <param name="token1"></param>
     /// <param name="token2"></param>
+    /// <param name="fileChecksum"></param>
     /// <returns></returns>
     [Route("contract"), HttpGet]
     [SwaggerResponse(HttpStatusCode.NotFound, Description = "No Values")]
-    public async Task<IHttpActionResult> AddContract(Guid contextId, string token1, string token2)
+    public async Task<IHttpActionResult> AddContract(Guid contextId, string token1, string token2, string fileChecksum, string contextHash)
     {
-      var response = await _service.AddContract(new ContractBindingModel(contextId, token1, token2));
+      var response = await _service.AddContract(new ContractBindingModel(contextId, token1, token2, fileChecksum, contextHash));
 
       return Ok(response);
     }
