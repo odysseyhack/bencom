@@ -4,13 +4,14 @@
         <name>BenChain.Api</name>
     </assembly>
     <members>
-        <member name="M:BenChain.Api.Controllers.ContractController.AddContract(System.Guid,System.String,System.String)">
+        <member name="M:BenChain.Api.Controllers.ContractController.AddContract(System.Guid,System.String,System.String,System.String,System.String)">
             <summary>
             Add a contract to the blockchain 
             </summary>
             <param name="contextId"></param>
             <param name="token1"></param>
             <param name="token2"></param>
+            <param name="fileChecksum"></param>
             <returns></returns>
         </member>
         <member name="T:BenChain.Api.Models.ContractBindingModel">
@@ -31,6 +32,16 @@
         <member name="P:BenChain.Api.Models.ContractBindingModel.Token2">
             <summary>
             Token 2
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ContractBindingModel.FileChecksum">
+            <summary>
+            File checksum
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ContractBindingModel.ContextHash">
+            <summary>
+            Context HAsh
             </summary>
         </member>
         <member name="T:BenChain.Api.Models.ResponseModel">

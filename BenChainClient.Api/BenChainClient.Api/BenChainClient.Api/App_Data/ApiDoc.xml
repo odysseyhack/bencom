@@ -307,7 +307,17 @@
             
             </summary>
         </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.ContextHash">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:BenChainClient.Api.Models.ContextModel.Creator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.CreatorName">
             <summary>
             
             </summary>

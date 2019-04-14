@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/ApiDoc.xml">
-      <publishTime>04/14/2019 03:01:28</publishTime>
+      <publishTime>04/14/2019 08:32:36</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>04/12/2019 16:56:17</publishTime>
@@ -31,10 +31,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/14/2019 03:17:32</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.dll">
-      <publishTime>04/14/2019 03:17:42</publishTime>
+      <publishTime>04/14/2019 08:34:52</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.pdb">
-      <publishTime>04/14/2019 03:17:42</publishTime>
+      <publishTime>04/14/2019 08:34:52</publishTime>
     </File>
     <File Include="bin/CommonServiceLocator.dll">
       <publishTime>03/03/2018 12:12:52</publishTime>
