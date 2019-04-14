@@ -10,6 +10,13 @@ namespace BenChainClient.Api.Servicies
   /// </summary>
   public interface IContextService : IDisposable
   {
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
+    Task<ContextModel> GetById(Guid Id);
     /// <summary>
     /// 
     /// </summary>

@@ -28,6 +28,16 @@ namespace BenChainClient.Api.Servicies
       _participantService = new ParticipantService();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<ContextModel> GetById(Guid id)
+    {
+      var context = (await _contextRepository.GetAllWhere(c => c.Id == id).ConfigureAwait(false)).Select(AutoMapper.Mapper.Map<ContextModel>).FirstOrDefault();
+      return context;
+    }
     /// <inheritdoc />
     /// <summary>
     /// </summary>

@@ -16,5 +16,6 @@ namespace BenChainClient.Api.Models
     public string BenChainContractId { get; set; }
     public string BenChainABI { get; set; }
     public string BenChainBytescode { get; set; }
+    public ContextModel ContextModel { get; set; }
   }
 }

@@ -37,7 +37,16 @@ namespace BenChainClient.Api.Controllers
     {
       _contextService.Dispose();
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    [Route("byid"), HttpGet, ResponseType(typeof(ContextModel))]
+    public async Task<IHttpActionResult> GetById(Guid Id)
+    {
+      var context = await _contextService.GetById(Id);
+      return Ok(context);
+    }
     /// <summary>
     /// 
     /// </summary>

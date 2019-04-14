@@ -17,14 +17,15 @@ namespace BenChainClient.Api.Controllers
   public class SignatorController : ApiController
   {
     private readonly ISignatorServices _signatorServices;
-
+    private readonly IContextService _contextService;
     /// <summary>
     /// 
     /// </summary>
     /// <param name="signatorServices"></param>
-    public SignatorController(ISignatorServices signatorServices)
+    public SignatorController(ISignatorServices signatorServices, IContextService contextService)
     {
       _signatorServices = signatorServices;
+      _contextService = contextService;
     }
 
     /// <summary>
@@ -56,6 +57,11 @@ namespace BenChainClient.Api.Controllers
     public async Task<IHttpActionResult> GetAllByParticipant(Guid participantId, int status)
     {
       var signators = await _signatorServices.GetAllByParticipant(participantId, status);
+      foreach (var signator in signators)
+      {
+        signator.ContextModel = new ContextModel();
+        signator.ContextModel = await _contextService.GetById(signator.ContextId).ConfigureAwait(false);
+      }
       return Ok(signators);
     }
 
@@ -69,6 +75,11 @@ namespace BenChainClient.Api.Controllers
     public async Task<IHttpActionResult> GetAllNotOpenByParticipant(Guid participantId)
     {
       var signators = await _signatorServices.GetAllNotOpenByParticipant(participantId);
+      foreach (var signator in signators)
+      {
+        signator.ContextModel = new ContextModel();
+        signator.ContextModel = await _contextService.GetById(signator.ContextId).ConfigureAwait(false);
+      }
       return Ok(signators);
     }
 

@@ -47,6 +47,12 @@
             
             </summary>
         </member>
+        <member name="M:BenChainClient.Api.Controllers.ContextController.GetById(System.Guid)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:BenChainClient.Api.Controllers.ContextController.GetAll">
             <summary>
             
@@ -103,7 +109,7 @@
             <param name="participantModel"></param>
             <returns></returns>
         </member>
-        <member name="M:BenChainClient.Api.Controllers.SignatorController.#ctor(BenChainClient.Api.Servicies.ISignatorServices)">
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.#ctor(BenChainClient.Api.Servicies.ISignatorServices,BenChainClient.Api.Servicies.IContextService)">
             <summary>
             
             </summary>
@@ -336,6 +342,13 @@
             
             </summary>
         </member>
+        <member name="M:BenChainClient.Api.Servicies.ContextService.GetById(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:BenChainClient.Api.Servicies.ContextService.GetAll">
             <inheritdoc />
             <summary>
@@ -372,6 +385,13 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="M:BenChainClient.Api.Servicies.IContextService.GetById(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
         </member>
         <member name="M:BenChainClient.Api.Servicies.IContextService.GetAll">
             <summary>
