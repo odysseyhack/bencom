@@ -34,7 +34,16 @@ namespace BenChainClient.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IList<SignatoryModel>>> GetAllOpenByParticipantWithHttpMessagesAsync(Guid participantId, int status, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<IList<SignatoryModel>>> GetAllByParticipantWithHttpMessagesAsync(Guid participantId, int status, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='participantId'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<IList<SignatoryModel>>> GetAllNotOpenByParticipantWithHttpMessagesAsync(Guid participantId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='participantModel'>
         /// </param>
         /// <param name='customHeaders'>
@@ -44,7 +53,7 @@ namespace BenChainClient.Api
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<SignatoryModel>> CreatedOrUpdateWithHttpMessagesAsync(SignatoryModel participantModel, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <param name='participantModel'>
+        /// <param name='signatoryModel'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -52,6 +61,6 @@ namespace BenChainClient.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<SignatoryModel>> BenChainUpdateWithHttpMessagesAsync(SignatoryModel participantModel, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<SignatoryModel>> BenChainUpdateWithHttpMessagesAsync(SignatoryModel signatoryModel, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

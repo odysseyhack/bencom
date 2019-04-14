@@ -46,9 +46,9 @@ namespace BenChainClient.Api
             /// </param>
             /// <param name='status'>
             /// </param>
-            public static IList<SignatoryModel> GetAllOpenByParticipant(this ISignator operations, Guid participantId, int status)
+            public static IList<SignatoryModel> GetAllByParticipant(this ISignator operations, Guid participantId, int status)
             {
-                return Task.Factory.StartNew(s => ((ISignator)s).GetAllOpenByParticipantAsync(participantId, status), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((ISignator)s).GetAllByParticipantAsync(participantId, status), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -61,9 +61,35 @@ namespace BenChainClient.Api
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<SignatoryModel>> GetAllOpenByParticipantAsync(this ISignator operations, Guid participantId, int status, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<SignatoryModel>> GetAllByParticipantAsync(this ISignator operations, Guid participantId, int status, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAllOpenByParticipantWithHttpMessagesAsync(participantId, status, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAllByParticipantWithHttpMessagesAsync(participantId, status, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='participantId'>
+            /// </param>
+            public static IList<SignatoryModel> GetAllNotOpenByParticipant(this ISignator operations, Guid participantId)
+            {
+                return Task.Factory.StartNew(s => ((ISignator)s).GetAllNotOpenByParticipantAsync(participantId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='participantId'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<SignatoryModel>> GetAllNotOpenByParticipantAsync(this ISignator operations, Guid participantId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAllNotOpenByParticipantWithHttpMessagesAsync(participantId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -98,24 +124,24 @@ namespace BenChainClient.Api
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='participantModel'>
+            /// <param name='signatoryModel'>
             /// </param>
-            public static SignatoryModel BenChainUpdate(this ISignator operations, SignatoryModel participantModel)
+            public static SignatoryModel BenChainUpdate(this ISignator operations, SignatoryModel signatoryModel)
             {
-                return Task.Factory.StartNew(s => ((ISignator)s).BenChainUpdateAsync(participantModel), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((ISignator)s).BenChainUpdateAsync(signatoryModel), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='participantModel'>
+            /// <param name='signatoryModel'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SignatoryModel> BenChainUpdateAsync(this ISignator operations, SignatoryModel participantModel, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SignatoryModel> BenChainUpdateAsync(this ISignator operations, SignatoryModel signatoryModel, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BenChainUpdateWithHttpMessagesAsync(participantModel, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BenChainUpdateWithHttpMessagesAsync(signatoryModel, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

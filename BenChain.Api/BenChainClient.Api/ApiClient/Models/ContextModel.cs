@@ -21,8 +21,9 @@ namespace BenChainClient.Api.Models
         /// <summary>
         /// Initializes a new instance of the ContextModel class.
         /// </summary>
-        public ContextModel(Guid? id = default(Guid?), int? refProperty = default(int?), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), DateTime? effectiveEndDate = default(DateTime?), int? status = default(int?), string note = default(string), string explanationNote = default(string), Guid? creator = default(Guid?), Guid? signator = default(Guid?), string token1 = default(string), string token2 = default(string))
+        public ContextModel(string title = default(string), Guid? id = default(Guid?), int? refProperty = default(int?), DateTime? created = default(DateTime?), DateTime? modified = default(DateTime?), DateTime? effectiveEndDate = default(DateTime?), int? status = default(int?), string note = default(string), string explanationNote = default(string), Guid? creator = default(Guid?), Guid? signator = default(Guid?), string signatorName = default(string), string token1 = default(string), string token2 = default(string))
         {
+            Title = title;
             Id = id;
             RefProperty = refProperty;
             Created = created;
@@ -33,9 +34,15 @@ namespace BenChainClient.Api.Models
             ExplanationNote = explanationNote;
             Creator = creator;
             Signator = signator;
+            SignatorName = signatorName;
             Token1 = token1;
             Token2 = token2;
         }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "Title")]
+        public string Title { get; set; }
 
         /// <summary>
         /// </summary>
@@ -86,6 +93,11 @@ namespace BenChainClient.Api.Models
         /// </summary>
         [JsonProperty(PropertyName = "Signator")]
         public Guid? Signator { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "SignatorName")]
+        public string SignatorName { get; set; }
 
         /// <summary>
         /// </summary>

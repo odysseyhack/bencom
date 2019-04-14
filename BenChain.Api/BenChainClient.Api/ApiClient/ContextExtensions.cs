@@ -20,6 +20,32 @@ namespace BenChainClient.Api
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='id'>
+            /// </param>
+            public static ContextModel GetById(this IContext operations, Guid id)
+            {
+                return Task.Factory.StartNew(s => ((IContext)s).GetByIdAsync(id), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='id'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ContextModel> GetByIdAsync(this IContext operations, Guid id, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetByIdWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
             public static IList<ContextModel> GetAll(this IContext operations)
             {
                 return Task.Factory.StartNew(s => ((IContext)s).GetAllAsync(), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
@@ -34,6 +60,32 @@ namespace BenChainClient.Api
             public static async Task<IList<ContextModel>> GetAllAsync(this IContext operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='participant'>
+            /// </param>
+            public static IList<ContextModel> GetAllByParticipant(this IContext operations, Guid participant)
+            {
+                return Task.Factory.StartNew(s => ((IContext)s).GetAllByParticipantAsync(participant), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='participant'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<ContextModel>> GetAllByParticipantAsync(this IContext operations, Guid participant, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAllByParticipantWithHttpMessagesAsync(participant, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

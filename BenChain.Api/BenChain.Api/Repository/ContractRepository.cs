@@ -37,9 +37,7 @@ namespace BenChain.Api.Repository
 
       web3 = new Web3(callerAccount, networkUrl);
 
-    }
-
-    
+    }    
 
     private static string GetStringFromStream(Stream stream)
     {

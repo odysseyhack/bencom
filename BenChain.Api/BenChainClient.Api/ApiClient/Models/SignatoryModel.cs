@@ -21,7 +21,7 @@ namespace BenChainClient.Api.Models
         /// <summary>
         /// Initializes a new instance of the SignatoryModel class.
         /// </summary>
-        public SignatoryModel(Guid? id = default(Guid?), Guid? participantId = default(Guid?), int? status = default(int?), DateTime? modified = default(DateTime?), int? orderId = default(int?), Guid? contextId = default(Guid?), string benChainContractId = default(string), string benChainABI = default(string), string benChainBytescode = default(string))
+        public SignatoryModel(Guid? id = default(Guid?), Guid? participantId = default(Guid?), int? status = default(int?), DateTime? modified = default(DateTime?), int? orderId = default(int?), Guid? contextId = default(Guid?), string benChainContractId = default(string), string benChainABI = default(string), string benChainBytescode = default(string), ContextModel contextModel = default(ContextModel))
         {
             Id = id;
             ParticipantId = participantId;
@@ -32,6 +32,7 @@ namespace BenChainClient.Api.Models
             BenChainContractId = benChainContractId;
             BenChainABI = benChainABI;
             BenChainBytescode = benChainBytescode;
+            ContextModel = contextModel;
         }
 
         /// <summary>
@@ -78,6 +79,11 @@ namespace BenChainClient.Api.Models
         /// </summary>
         [JsonProperty(PropertyName = "BenChainBytescode")]
         public string BenChainBytescode { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "ContextModel")]
+        public ContextModel ContextModel { get; set; }
 
     }
 }

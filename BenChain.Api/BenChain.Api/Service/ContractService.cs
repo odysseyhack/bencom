@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Configuration;
+using System.Text;
 using System.Threading.Tasks;
 using BenChain.Api.GenericContract.CQS;
 using BenChain.Api.GenericContract.Service;
 using BenChain.Api.Helpers;
 using BenChain.Api.Models;
 using BenChain.Api.Repository;
+using BenChainClient.Api.Models;
+using Multiformats.Hash;
 using Nethereum.HdWallet;
 using Nethereum.Hex.HexTypes;
 using Nethereum.RPC.Accounts;
@@ -22,6 +25,8 @@ namespace BenChain.Api.Service
     private const int DefaultGasAmount = 1000000;
     private IAccount _account;
     private readonly IContractRepository _contractRepository;
+
+    public int StatusIsChanged { get; private set; }
 
 
     /// <summary>
@@ -52,6 +57,7 @@ namespace BenChain.Api.Service
     public async Task<ResponseModel> AddContract(ContractBindingModel contractBindingModel)
     {
       var amountToSend = new HexBigInteger(1000000000000000000);
+      //var keccak =  Multihash.Kecc
 
       var web3 = new Web3(_account, _blockChainUrl);
 
@@ -59,28 +65,31 @@ namespace BenChain.Api.Service
       deployment.Gas = DefaultGasAmount;
 
       var service = await GenericContractService.DeployContractAndGetServiceAsync(web3, deployment);
-      var approveFunction = await service.ApproveRequestAndWaitForReceiptAsync(
-        new ApproveFunction
-        {
-          AmountToSend = amountToSend, // One ether
-          FromAddress = _account.Address,
-          Gas = DefaultGasAmount
-        });
+      //var approveFunction = await service.ApproveRequestAndWaitForReceiptAsync(
+      //  new ApproveFunction
+      //  {
+      //    AmountToSend = amountToSend, // One ether
+      //    FromAddress = _account.Address,
+      //    Gas = DefaultGasAmount
+      //  });
 
-
-      var contractId = Guid.NewGuid();
+      var contractId = service.ContractHandler.ContractAddress;
       var abi = _contractRepository.GetAbi();
       var bin = _contractRepository.GetBin();
 
-      var responseModel = new ResponseModel(contractBindingModel.ContextId, contractId.ToString(), bin, abi);
+      var responseModel = new ResponseModel(contractBindingModel.ContextId, contractId, bin, abi);
 
-      _ = BenChainClientApi.Client.Context.UpdateBenChainStatusWithHttpMessagesAsync(new BenChainClient.Api.Models.BenChainContextModel
+      _ = BenChainClientApi.Client.Signator.BenChainUpdateWithHttpMessagesAsync(new SignatoryModel
       {
-        ABI = abi,
-        Bytescode = bin,
-        ContractId = contractId.ToString(),
+        BenChainABI = abi,
+        BenChainBytescode = bin,
+        BenChainContractId = contractId,
         ContextId = contractBindingModel.ContextId
       });
+
+     
+
+    //var evengts =  service.DecodeAllEvents<StatusIsChanged>();
 
       return responseModel;
     }
@@ -109,11 +118,13 @@ namespace BenChain.Api.Service
     /// <returns></returns>
     public GenericContractDeployment CreateGenericContract(Guid contextId)
     {
+      DateTime endDate = DateTime.Now.AddDays(60);
+    
       GenericContractDeployment genericContractDeployment = new GenericContractDeployment
       {
         Parent = "0x0000000000000000000000000000000000000000",
         ContextId = contextId.ToString(),
-        Token = "x",
+        Token =  Encoding.ASCII.GetBytes("X"),  //byte[] bytes = Encoding.ASCII.GetBytes(someString);
         Version = "1",
         EndDate = 1,
       };

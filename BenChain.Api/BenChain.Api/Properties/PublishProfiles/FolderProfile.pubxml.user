@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/ApiDoc.xml">
-      <publishTime>04/13/2019 22:05:59</publishTime>
+      <publishTime>04/14/2019 01:42:00</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>09/10/2013 16:29:20</publishTime>
@@ -19,22 +19,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/BenChain.Api.dll">
-      <publishTime>04/13/2019 22:14:58</publishTime>
+      <publishTime>04/14/2019 02:20:36</publishTime>
     </File>
     <File Include="bin/BenChain.Api.pdb">
-      <publishTime>04/13/2019 22:14:58</publishTime>
+      <publishTime>04/14/2019 02:20:36</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.dll">
-      <publishTime>04/13/2019 21:21:32</publishTime>
+      <publishTime>04/14/2019 02:20:35</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.dll.config">
-      <publishTime>04/13/2019 21:13:34</publishTime>
+      <publishTime>04/14/2019 02:03:10</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.pdb">
-      <publishTime>04/13/2019 21:21:32</publishTime>
+      <publishTime>04/14/2019 02:20:35</publishTime>
+    </File>
+    <File Include="bin/BinaryEncoding.dll">
+      <publishTime>05/23/2018 20:44:14</publishTime>
     </File>
     <File Include="bin/BouncyCastle.Crypto.dll">
-      <publishTime>04/10/2018 13:45:44</publishTime>
+      <publishTime>08/31/2018 16:17:54</publishTime>
     </File>
     <File Include="bin/Common.Logging.Core.dll">
       <publishTime>08/16/2017 06:51:46</publishTime>
@@ -59,6 +62,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/Microsoft.Win32.Primitives.dll">
       <publishTime>04/04/2019 10:34:20</publishTime>
+    </File>
+    <File Include="bin/Multiformats.Base.dll">
+      <publishTime>02/10/2018 01:02:22</publishTime>
+    </File>
+    <File Include="bin/Multiformats.Hash.dll">
+      <publishTime>10/07/2018 14:55:20</publishTime>
+    </File>
+    <File Include="bin/MurmurHash.dll">
+      <publishTime>10/21/2017 11:39:40</publishTime>
     </File>
     <File Include="bin/NBitcoin.dll">
       <publishTime>04/05/2019 06:35:16</publishTime>
@@ -290,6 +302,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/System.ComponentModel.TypeConverter.dll">
       <publishTime>04/04/2019 10:34:20</publishTime>
+    </File>
+    <File Include="bin/System.Composition.AttributedModel.dll">
+      <publishTime>05/15/2018 13:29:40</publishTime>
+    </File>
+    <File Include="bin/System.Composition.Convention.dll">
+      <publishTime>05/15/2018 13:29:38</publishTime>
+    </File>
+    <File Include="bin/System.Composition.Hosting.dll">
+      <publishTime>05/15/2018 13:29:38</publishTime>
+    </File>
+    <File Include="bin/System.Composition.Runtime.dll">
+      <publishTime>05/15/2018 13:29:36</publishTime>
+    </File>
+    <File Include="bin/System.Composition.TypedParts.dll">
+      <publishTime>05/15/2018 13:29:36</publishTime>
     </File>
     <File Include="bin/System.Console.dll">
       <publishTime>04/04/2019 10:34:20</publishTime>
@@ -586,7 +613,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
     <File Include="Contracts/GenericContract.sol">
-      <publishTime>04/13/2019 17:14:18</publishTime>
+      <publishTime>04/13/2019 23:22:42</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>04/13/2019 08:54:38</publishTime>
@@ -595,7 +622,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2019 08:54:38</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/13/2019 22:10:47</publishTime>
+      <publishTime>04/14/2019 02:20:37</publishTime>
     </File>
   </ItemGroup>
 </Project>
