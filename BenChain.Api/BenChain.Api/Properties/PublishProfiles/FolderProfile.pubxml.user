@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/ApiDoc.xml">
-      <publishTime>04/14/2019 01:42:00</publishTime>
+      <publishTime>04/14/2019 08:18:04</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>09/10/2013 16:29:20</publishTime>
@@ -19,19 +19,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/BenChain.Api.dll">
-      <publishTime>04/14/2019 02:20:36</publishTime>
+      <publishTime>04/14/2019 08:19:48</publishTime>
     </File>
     <File Include="bin/BenChain.Api.pdb">
-      <publishTime>04/14/2019 02:20:36</publishTime>
+      <publishTime>04/14/2019 08:19:48</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.dll">
-      <publishTime>04/14/2019 02:20:35</publishTime>
+      <publishTime>04/14/2019 08:19:45</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.dll.config">
-      <publishTime>04/14/2019 02:03:10</publishTime>
+      <publishTime>04/14/2019 08:17:49</publishTime>
     </File>
     <File Include="bin/BenChainClient.Api.pdb">
-      <publishTime>04/14/2019 02:20:35</publishTime>
+      <publishTime>04/14/2019 08:19:45</publishTime>
     </File>
     <File Include="bin/BinaryEncoding.dll">
       <publishTime>05/23/2018 20:44:14</publishTime>
@@ -613,7 +613,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
     <File Include="Contracts/GenericContract.sol">
-      <publishTime>04/13/2019 23:22:42</publishTime>
+      <publishTime>04/14/2019 08:14:37</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>04/13/2019 08:54:38</publishTime>
@@ -622,7 +622,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2019 08:54:38</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/14/2019 02:20:37</publishTime>
+      <publishTime>04/14/2019 08:19:49</publishTime>
     </File>
   </ItemGroup>
 </Project>

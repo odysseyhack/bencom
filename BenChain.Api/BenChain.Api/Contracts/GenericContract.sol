@@ -4,13 +4,15 @@ contract GenericContract {
     address parent;
     bytes32 token;
     uint createDate;
+    
+    string contextHash;
+    string[] attachments;
 
     enum Status {approved, declined}
 
     string contextId;
     string version;
     uint endDate;
-    string[] attachments;
     Status status;
     
     address creator;
@@ -25,6 +27,7 @@ contract GenericContract {
     constructor (
         address _parent,
         bytes32 _token,
+        string _contextHash,
         string memory _contextId,
         string memory _version,
         uint _endDate
@@ -32,6 +35,7 @@ contract GenericContract {
         parent = _parent;
         token = _token;
         
+        contextHash = _contextHash;
         contextId = _contextId;
         version = _version;
         endDate = _endDate;
@@ -45,27 +49,20 @@ contract GenericContract {
         _;
     }
     
-    function addAttachmentHash(string hash) beforeEndDate public {
-        require(msg.sender == creator, "Can not add attachment hash, you are not the owner of the contract");
+    function addAttachmentHash(string hash) public {
         attachments.push(hash);
     }
     
-    function approve(string token1, string token2) beforeEndDate public {
-        if (msg.sender != owner) {
-            require(keccak256(abi.encodePacked(token1, token2)) == token, "Invalid token");
-        }
-        
+    function approve() public {
         status = Status.approved;
+        owner = msg.sender;
         
         emit StatusIsChanged(address(this), contextId, uint(status));
     }
     
-    function decline(string token1, string token2) beforeEndDate public {
-        if (msg.sender != owner) {
-            require(keccak256(abi.encodePacked(token1, token2)) == token, "Invalid token");
-        }
-        
+    function decline() public {
         status = Status.declined;
+        owner = msg.sender;
         
         emit StatusIsChanged(address(this), contextId, uint(status));
     }

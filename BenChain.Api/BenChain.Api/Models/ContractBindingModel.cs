@@ -10,6 +10,14 @@ namespace BenChain.Api.Models
   /// </summary>
   public class ContractBindingModel
   {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="contextId"></param>
+    /// <param name="token1"></param>
+    /// <param name="token2"></param>
+    /// <param name="fileChecksum"></param>
+    /// <param name="contextHash"></param>
     public ContractBindingModel(Guid contextId, string token1, string token2, string fileChecksum = null, string contextHash = null)
     {
       ContextId = contextId;
@@ -44,7 +52,5 @@ namespace BenChain.Api.Models
     /// Context HAsh
     /// </summary>
     public string ContextHash { get; set; }
-
-
   }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Nethereum.Hex.HexTypes;
+﻿using Nethereum.Hex.HexTypes;
 using Nethereum.RPC.Accounts;
 using Nethereum.Web3;
 using System.IO;
@@ -35,7 +34,7 @@ namespace BenChain.Api.Repository
       _abi = GetStringFromStream(assembly.GetManifestResourceStream("BenChain.Api.Contracts.GenericContract.abi"));
       _contractByteCode = GetStringFromStream(assembly.GetManifestResourceStream("BenChain.Api.Contracts.GenericContract.bin"));
 
-      web3 = new Web3(callerAccount, networkUrl);
+        web3 = new Web3(callerAccount, networkUrl);
 
     }    
 
