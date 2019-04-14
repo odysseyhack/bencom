@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="odysseyModel.Participant" Width="1.5" PointX="4.875" PointY="0.5" />
         <EntityTypeShape EntityType="odysseyModel.Reference" Width="1.5" PointX="4.875" PointY="3.5" />
         <EntityTypeShape EntityType="odysseyModel.Signatory" Width="1.5" PointX="0.875" PointY="2.875" />
-        <EntityTypeShape EntityType="odysseyModel.Context" Width="1.5" PointX="2.875" PointY="1.25" />
+        <EntityTypeShape EntityType="odysseyModel.Context" Width="1.5" PointX="2.875" PointY="2.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

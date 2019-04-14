@@ -109,7 +109,7 @@
             <param name="participantModel"></param>
             <returns></returns>
         </member>
-        <member name="M:BenChainClient.Api.Controllers.SignatorController.#ctor(BenChainClient.Api.Servicies.ISignatorServices,BenChainClient.Api.Servicies.IContextService)">
+        <member name="M:BenChainClient.Api.Controllers.SignatorController.#ctor(BenChainClient.Api.Servicies.ISignatorServices,BenChainClient.Api.Servicies.IContextService,BenChainClient.Api.Servicies.IParticipantService)">
             <summary>
             
             </summary>
@@ -328,6 +328,11 @@
             </summary>
         </member>
         <member name="P:BenChainClient.Api.Models.ContextModel.Token2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BenChainClient.Api.Models.ContextModel.FileCheckSum">
             <summary>
             
             </summary>

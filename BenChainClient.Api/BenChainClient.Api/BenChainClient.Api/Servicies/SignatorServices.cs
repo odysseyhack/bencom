@@ -48,6 +48,7 @@ namespace BenChainClient.Api.Servicies
       var signators = (await _signatorRepository.GetAllWhere(s => s.ParticipantId == participantId && s.Status == status).ConfigureAwait(false))
         .Select(AutoMapper.Mapper.Map<SignatoryModel>)
         .ToList();
+      
       return signators;
     }
 

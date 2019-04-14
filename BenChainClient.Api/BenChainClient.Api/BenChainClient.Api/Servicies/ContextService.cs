@@ -62,7 +62,9 @@ namespace BenChainClient.Api.Servicies
       foreach (var context in contexts)
       {
         context.SignatorName = (await _participantService.GetById(context.Signator).ConfigureAwait(false)).Name;
+        context.CreatorName =  (await _participantService.GetById(context.Creator).ConfigureAwait(false)).Name;
       }
+    
       return contexts;
     }
 

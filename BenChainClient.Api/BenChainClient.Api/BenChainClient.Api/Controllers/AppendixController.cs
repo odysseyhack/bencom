@@ -18,7 +18,7 @@ using BenChainClient.Api.Helpers;
 namespace BenChainClient.Api.Controllers
 {
   [EnableCors(origins: "*", headers: "*", methods: "GET,POST,OPTIONS")]
-  [System.Web.Http.RoutePrefix("api/contract")]
+  [System.Web.Http.RoutePrefix("api/bijlage")]
 
   public class AppendixController : ApiController
   {

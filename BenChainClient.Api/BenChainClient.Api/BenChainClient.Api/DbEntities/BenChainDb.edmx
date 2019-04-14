@@ -31,6 +31,7 @@
           <Property Name="Token2" Type="nvarchar" MaxLength="550" Nullable="false" />
           <Property Name="Ref" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="550" />
+          <Property Name="FileCheckSum" Type="varchar" MaxLength="550" />
         </EntityType>
         <EntityType Name="Participant">
           <Key>
@@ -63,8 +64,8 @@
           <Property Name="Modified" Type="datetime" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="Note" Type="text" />
-          <Property Name="BenChainABI" Type="text" />
-          <Property Name="BenChainBytescode" Type="text" />
+          <Property Name="BenChainABI" Type="nvarchar(max)" />
+          <Property Name="BenChainBytescode" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="odysseyModelStoreContainer">
           <EntitySet Name="Appendix" EntityType="Self.Appendix" Schema="dbo" store:Type="Tables" />
@@ -124,8 +125,8 @@
           <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BenChainABI" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BenChainBytescode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BenChainABI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BenChainBytescode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Context">
           <Key>
@@ -144,6 +145,7 @@
           <Property Name="Token2" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
           <Property Name="Ref" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="FileCheckSum" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -201,6 +203,7 @@
           <EntitySetMapping Name="Context">
             <EntityTypeMapping TypeName="odysseyModel.Context">
               <MappingFragment StoreEntitySet="Context">
+                <ScalarProperty Name="FileCheckSum" ColumnName="FileCheckSum" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Ref" ColumnName="Ref" />
                 <ScalarProperty Name="Token2" ColumnName="Token2" />

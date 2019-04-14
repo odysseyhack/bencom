@@ -27,5 +27,6 @@ namespace BenChainClient.Api.DbEntities
         public string Token2 { get; set; }
         public int Ref { get; set; }
         public string Title { get; set; }
+        public string FileCheckSum { get; set; }
     }
 }

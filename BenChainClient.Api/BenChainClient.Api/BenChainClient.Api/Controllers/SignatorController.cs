@@ -18,14 +18,16 @@ namespace BenChainClient.Api.Controllers
   {
     private readonly ISignatorServices _signatorServices;
     private readonly IContextService _contextService;
+    private readonly IParticipantService _participantService;
     /// <summary>
     /// 
     /// </summary>
     /// <param name="signatorServices"></param>
-    public SignatorController(ISignatorServices signatorServices, IContextService contextService)
+    public SignatorController(ISignatorServices signatorServices, IContextService contextService, IParticipantService participantService)
     {
       _signatorServices = signatorServices;
       _contextService = contextService;
+      _participantService = participantService;
     }
 
     /// <summary>
@@ -61,6 +63,10 @@ namespace BenChainClient.Api.Controllers
       {
         signator.ContextModel = new ContextModel();
         signator.ContextModel = await _contextService.GetById(signator.ContextId).ConfigureAwait(false);
+
+        signator.ContextModel.SignatorName = (await _participantService.GetById(signator.ContextModel.Signator).ConfigureAwait(false)).Name;
+        signator.ContextModel.CreatorName =  (await _participantService.GetById(signator.ContextModel.Creator).ConfigureAwait(false)).Name;
+       
       }
       return Ok(signators);
     }
@@ -79,6 +85,8 @@ namespace BenChainClient.Api.Controllers
       {
         signator.ContextModel = new ContextModel();
         signator.ContextModel = await _contextService.GetById(signator.ContextId).ConfigureAwait(false);
+        signator.ContextModel.SignatorName = (await _participantService.GetById(signator.ContextModel.Signator).ConfigureAwait(false)).Name;
+        signator.ContextModel.CreatorName = (await _participantService.GetById(signator.ContextModel.Creator).ConfigureAwait(false)).Name;
       }
       return Ok(signators);
     }

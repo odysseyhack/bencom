@@ -52,6 +52,7 @@ namespace BenChainClient.Api.Models
     /// 
     /// </summary>
     public Guid Creator { get; set; }
+    public string CreatorName { get; set; }
     /// <summary>
     /// 
     /// </summary>
@@ -68,6 +69,9 @@ namespace BenChainClient.Api.Models
     /// 
     /// </summary>
     public string Token2 { get; set; }
-    
+    /// <summary>
+    /// 
+    /// </summary>
+    public string FileCheckSum { get; set; }
   }
 }
