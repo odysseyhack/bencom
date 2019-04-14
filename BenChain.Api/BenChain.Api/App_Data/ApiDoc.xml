@@ -4,19 +4,30 @@
         <name>BenChain.Api</name>
     </assembly>
     <members>
-        <member name="M:BenChain.Api.Controllers.ContractController.AddContract(System.Guid,System.String,System.String)">
+        <member name="M:BenChain.Api.Controllers.ContractController.AddContract(System.Guid,System.String,System.String,System.String,System.String)">
             <summary>
             Add a contract to the blockchain 
             </summary>
             <param name="contextId"></param>
             <param name="token1"></param>
             <param name="token2"></param>
+            <param name="fileChecksum"></param>
             <returns></returns>
         </member>
         <member name="T:BenChain.Api.Models.ContractBindingModel">
             <summary>
             Contract binding model
             </summary>
+        </member>
+        <member name="M:BenChain.Api.Models.ContractBindingModel.#ctor(System.Guid,System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="contextId"></param>
+            <param name="token1"></param>
+            <param name="token2"></param>
+            <param name="fileChecksum"></param>
+            <param name="contextHash"></param>
         </member>
         <member name="P:BenChain.Api.Models.ContractBindingModel.ContextId">
             <summary>
@@ -31,6 +42,16 @@
         <member name="P:BenChain.Api.Models.ContractBindingModel.Token2">
             <summary>
             Token 2
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ContractBindingModel.FileChecksum">
+            <summary>
+            File checksum
+            </summary>
+        </member>
+        <member name="P:BenChain.Api.Models.ContractBindingModel.ContextHash">
+            <summary>
+            Context HAsh
             </summary>
         </member>
         <member name="T:BenChain.Api.Models.ResponseModel">
@@ -108,11 +129,12 @@
             <param name="contractBindingModel"></param>
             <returns></returns>
         </member>
-        <member name="M:BenChain.Api.Service.ContractService.CreateGenericContract(System.Guid)">
+        <member name="M:BenChain.Api.Service.ContractService.CreateGenericContract(System.Guid,BenChain.Api.Models.ContractBindingModel)">
             <summary>
             Create contract
             </summary>
             <param name="contextId"></param>
+            <param name="keccak">Hashed tokens</param>
             <returns></returns>
         </member>
     </members>

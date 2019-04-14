@@ -36,19 +36,15 @@ namespace BenChain.Api.Service
     public ContractService()
     {
       var blockChainUrl = ConfigurationManager.AppSettings["BlockChainUrl"];
-      _blockChainUrl = blockChainUrl;
       var mnemonic = ConfigurationManager.AppSettings["WalletMnemonic"];
 
       var wallet = new Wallet(mnemonic, null);
       _account = wallet.GetAccount(0);
+      _blockChainUrl = blockChainUrl;
 
       _contractRepository = new ContractRepository(_account, blockChainUrl);
 
-
-      //var x = BenChainClientApi.Client.Participant.GetAllWithHttpMessagesAsync();
-
     }
-
 
     /// <summary>
     /// 
@@ -58,30 +54,25 @@ namespace BenChain.Api.Service
     public async Task<ResponseModel> AddContract(ContractBindingModel contractBindingModel)
     {
       var amountToSend = new HexBigInteger(1000000000000000000);
-      var keccak = Multihash.Encode( contractBindingModel.Token1 + contractBindingModel.Token2, HashType.KECCAK_256);
+      string keccak = Multihash.Encode(contractBindingModel.Token1 + contractBindingModel.Token2, HashType.KECCAK_256);
+      byte[] keccak2 = Multihash.Encode(contractBindingModel.Token1 + contractBindingModel.Token2, HashType.KECCAK_256);
+
 
       var web3 = new Web3(_account, _blockChainUrl);
 
-      var deployment = CreateGenericContract(Guid.NewGuid());
+      var deployment = CreateGenericContract(Guid.NewGuid(), contractBindingModel);
       deployment.Gas = DefaultGasAmount;
-      
-      var service = await GenericContractService.DeployContractAndGetServiceAsync(web3, deployment);
-      var addAttachment = await service.AddAttachmentHashRequestAndWaitForReceiptAsync(new AddAttachmentHashFunction
-      {
-        FromAddress = _account.Address,
-        Hash = contractBindingModel.FileChecksum,
-        Gas = DefaultGasAmount
-      });
 
-      //var approveFunction = await service.ApproveRequestAndWaitForReceiptAsync(
-      //  new ApproveFunction
-      //  {
-      //    AmountToSend = amountToSend, // One ether
-      //    FromAddress = _account.Address,
-      //    Gas = DefaultGasAmount
-      //  });
+      var transactionHash = await GenericContractService.DeployContractAsync(web3, deployment);
 
-      var contractId = service.ContractHandler.ContractAddress;
+      //var addAttachment = await service.AddAttachmentHashRequestAndWaitForReceiptAsync(new AddAttachmentHashFunction
+      //{
+      //  FromAddress = _account.Address,
+      //  Hash = contractBindingModel.FileChecksum,
+      //  Gas = DefaultGasAmount
+      //});
+
+      var contractId = transactionHash;
       var abi = _contractRepository.GetAbi();
       var bin = _contractRepository.GetBin();
 
@@ -92,16 +83,11 @@ namespace BenChain.Api.Service
         BenChainABI = abi,
         BenChainBytescode = bin,
         BenChainContractId = contractId,
-        ContextId = contractBindingModel.ContextId
+        ContextId = contractBindingModel.ContextId        
       });
-
-     
-
-    //var evengts =  service.DecodeAllEvents<StatusIsChanged>();
 
       return responseModel;
     }
-
 
     public void ApproveContract(Guid contractId, string contractAddress)
     {
@@ -117,29 +103,25 @@ namespace BenChain.Api.Service
       _ = service.ApproveRequestAsync(approve);
     }
 
-
-
     /// <summary>
     /// Create contract
     /// </summary>
     /// <param name="contextId"></param>
+    /// <param name="keccak">Hashed tokens</param>
     /// <returns></returns>
-    public GenericContractDeployment CreateGenericContract(Guid contextId)
-    {
-      DateTime endDate = DateTime.Now.AddDays(60);
-    
+    public GenericContractDeployment CreateGenericContract(Guid contextId, ContractBindingModel bindingModel) {
+
       GenericContractDeployment genericContractDeployment = new GenericContractDeployment
       {
         Parent = "0x0000000000000000000000000000000000000000",
         ContextId = contextId.ToString(),
-        Token =  Encoding.ASCII.GetBytes("X"),  //byte[] bytes = Encoding.ASCII.GetBytes(someString);
+        Token = Encoding.ASCII.GetBytes("X"), // keccak,  
         Version = "1",
-        EndDate = 1,
+        ContextHash = bindingModel.ContextHash,
+        EndDate = 9,
       };
 
       return genericContractDeployment;
-
     }
   }
-
 }
